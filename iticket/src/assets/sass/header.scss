@@ -1,0 +1,19 @@
+.logo{
+    width: 100px !important;
+    
+  
+}
+
+
+
+.navo::before{
+    transition: .5s;
+    
+}
+.navo:hover{
+    color: #ffee10;
+  box-shadow: 0 0 5px #ffee10;
+  text-shadow: 0 0 5px black;
+}
+
+
