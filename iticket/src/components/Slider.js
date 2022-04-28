@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from './Header';
+import '../assets/sass/slider.scss'
 
 function Slider() {
     return (
-        <div className="container">
-            <Header/>
+        <div>
+
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -19,7 +19,7 @@ function Slider() {
                 </div>
                 <a className="carousel-control-prev lefticon" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    
+
                 </a>
                 <a className="carousel-control-next righticon" href="#carouselExampleControls" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>

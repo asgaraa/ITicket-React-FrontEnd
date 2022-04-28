@@ -4,11 +4,11 @@ import {Navbar,Container,Nav,NavDropdown} from 'react-bootstrap'
 function Header() {
     return (
         <div >
-            <div className='container' >
+            <div className='container-xxl' >
        
             <Navbar  expand="lg">
   <Container fluid>
-    <Navbar.Brand href="#"><img className='logo' src={require('../assets/img/logoss.jpeg')} alt="logo" /></Navbar.Brand>
+    <Navbar.Brand href="#"><img className='logo' src={require('../assets/img/logoiticket.png')} alt="logo" /></Navbar.Brand>
     <Navbar.Toggle aria-controls="navbarScroll" />
     <Navbar.Collapse id="navbarScroll">
       <Nav

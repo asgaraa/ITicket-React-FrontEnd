@@ -1,5 +1,8 @@
 import React from 'react'
 import Slider from '../Slider'
+import '../../assets/sass/home.scss'
+import Header from '../Header'
+import Cards from '../Cards'
 
 
 
@@ -7,7 +10,11 @@ import Slider from '../Slider'
 function Home() {
     return (
         <div >
-         <Slider/>
+          
+            <Header/>
+            <Slider/>
+            <Cards/>
+
         </div>
 
     )
