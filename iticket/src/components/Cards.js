@@ -1,49 +1,45 @@
-import React from 'react'
+import React from 'react';
+
 import '../assets/sass/cards.scss'
 
 function Cards() {
     return (
         <div>
-            {/* <a href={"kids/kid-s-master-class-cooking.html"} title="Uşaqlar üçün master-klas- Bişirmə" target="" className="event-list-item">
-                <div className="relative">
 
-                    <div className="image">
-                       
-                        <img src={require('../assets/img/mulat.jpg')} alt="Uşaqlar üçün master-klas- Bişirmə" className=" lazyloaded" />
-                        <span className="btn">
-                            <span className="price">15 ₼</span>
-                        </span>
-
-                        <div className="info">
-                            <div className="event-name">
-                                Uşaqlar üçün master-klas- Bişirmə
+          
+                <div class="container d-flex align-items-center justify-content-center position-relative flex-wrap">
+                    <div class="card d-flex position-relative flex-column">
+                        <div class='imgContainer'> <img alt='' src={'https://images.pexels.com/photos/1456268/pexels-photo-1456268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'} /> </div>
+                        <div class="content">
+                            <h2>Card One</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget velit tristique, sollicitudin leo viverra, suscipit neque. Aliquam ut facilisis urna, in pretium nibh. Morbi in leo in eros commodo volutpat ac sed dolor.</p>
+                        </div>
+                    </div>
+                  
+                        <div class="card d-flex position-relative flex-column">
+                            <div class='imgContainer'> <img alt='' src={'https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'} /> </div>
+                            <div class="content">
+                                <h2>Card Two</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget velit tristique, sollicitudin leo viverra, suscipit neque. Aliquam ut facilisis urna, in pretium nibh. Morbi in leo in eros commodo volutpat ac sed dolor.</p>
                             </div>
-                            <div className="flex w-full items-center flex-1">
-                                <div className="event-date">
-                                    30 aprel 2022
-                                </div> <span className="separator"> • </span>
-                                <div className="venue-name">
-                                    Free Children
-                                </div>
-                            </div>
+                        </div>
+                   <div class="card d-flex position-relative flex-column">
+                        <div class='imgContainer'> <img alt='' src={'https://images.pexels.com/photos/847483/pexels-photo-847483.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'} /> </div>
+                        <div class="content">
+                            <h2>Card Three</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget velit tristique, sollicitudin leo viverra, suscipit neque. Aliquam ut facilisis urna, in pretium nibh. Morbi in leo in eros commodo volutpat ac sed dolor.</p>
                         </div>
                     </div>
                 </div>
-            </a> */}
-            <div className='wrapper'>
-                <div className='card'>
-                    <img src={require('../assets/img/logoss.jpeg')} alt="" />
-                    <div className='info'>
-                        <h1>
-                            mountain
-                        </h1>
-                        <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-                        <button>readmore</button>
-                    </div>
-                </div>
-            </div>
 
-         
+      
+
+
+
+
+
+
+
         </div>
     )
 }
