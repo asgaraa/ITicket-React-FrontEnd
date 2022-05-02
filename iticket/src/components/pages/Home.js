@@ -9,6 +9,7 @@ import KidsSlider from '../KidsSlider'
 import TheatreSlider from '../TheatreSlider'
 import FilmsSlider from '../FilmsSlider'
 import Poster from '../Poster'
+import Footer from '../Footer'
 
 
 
@@ -28,6 +29,7 @@ function Home() {
             <TheatreSlider />
             <FilmsSlider />
             <Poster/>
+            <Footer/>
 
 
         </div>
