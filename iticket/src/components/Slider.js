@@ -3,7 +3,7 @@ import '../assets/sass/slider.scss'
 
 function Slider() {
     return (
-        <div>
+        <div className='slide'>
 
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
