@@ -1,0 +1,32 @@
+.mycol{
+    width: 470.64px;
+    height: 518.7px;
+    padding: 0;
+    margin: 0;
+
+    .mycard{
+        width: 100%;
+        height: 90vh;
+        margin: 0;
+        padding: 0;
+        background-repeat: no-repeat ;
+        box-sizing: border-box;
+        background-image: url(https://cdn.iticket.az/event/poster_bg/NTuwW8JMlRRhylWwaN5VfQ9Bg8uAZKR85ylsFwzX.jpg);
+        
+        .image{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        &:hover{
+            .image{
+                height: 90%;
+            }
+        }
+    
+    
+    
+    
+    }
+}
