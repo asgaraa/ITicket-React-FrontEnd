@@ -23,10 +23,10 @@ function Header() {
                 <NavDropdown.Item className='navo' href="#action5">Muzeylər</NavDropdown.Item>
                 <NavDropdown.Item className='navo' href="#action6">Filmlər</NavDropdown.Item>
               </Nav>
-              <Nav.Link className='navo' href="#action7"><i class="far fa-heart"></i></Nav.Link>
-              <Nav.Link className='navo' href="#action8"><i class="fas fa-search"></i></Nav.Link>
-              <Nav.Link className='navo' href="#action9"><i class="fas fa-shopping-cart"></i></Nav.Link>
-              <Nav.Link className='navo' href="#action10"><i class="fas fa-user-circle"></i></Nav.Link>
+              <Nav.Link className='navo' href="#action7"><i className="navo far fa-heart"></i></Nav.Link>
+              <Nav.Link className='navo' href="#action8"><i className="navo fas fa-search"></i></Nav.Link>
+              <Nav.Link className='navo' href="#action9"><i className="navo fas fa-shopping-cart"></i></Nav.Link>
+              <Nav.Link className='navo' href="#action10"><i className="navo fas fa-user-circle"></i></Nav.Link>
             </Navbar.Collapse>
           </Container>
         </Navbar>
