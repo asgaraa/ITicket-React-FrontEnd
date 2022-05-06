@@ -1,5 +1,5 @@
 import React from 'react'
-import Slider from '../Slider'
+// import Slider from '../Slider'
 import '../../assets/sass/home.scss'
 import Header from '../Header'
 import InnovationsSlider from '../InnovationsSlider'
@@ -10,7 +10,8 @@ import TheatreSlider from '../TheatreSlider'
 import FilmsSlider from '../FilmsSlider'
 import Poster from '../Poster'
 import Footer from '../Footer'
-import Films from '../Films'
+import Carousel from '../Carousel'
+
 
 
 
@@ -22,19 +23,16 @@ function Home() {
         <div >
 
             <Header />
-            <Slider />
-
+            <Carousel />
             <InnovationsSlider />
             <ConcertsSlider />
             <TourismSlider />
             <KidsSlider />
-
-            <Films></Films>
             <TheatreSlider />
             <FilmsSlider />
-            <Poster/>
-            <Footer/>
-            
+            <Poster />
+            <Footer />
+
 
 
         </div>

@@ -3,7 +3,7 @@ import '../assets/sass/poster.scss'
 
 function Poster() {
     return (
-        <div className='mt-5'>
+        <div className='poster'>
             <div class="content-container mt-5" >
                 <div className="app-block"><div className="content">
                     <div className="title">NÖVBƏTİ VİZUAL SƏYAHƏTİNİZİ TAPIN</div>

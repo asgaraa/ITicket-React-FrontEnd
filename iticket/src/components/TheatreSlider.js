@@ -1,70 +1,170 @@
 import React from 'react';
-import Carousel from 'react-elastic-carousel';
+
+import Slider from 'react-slick/lib/slider';
 import '../assets/sass/theatreslider.scss'
 
 function SliderCard() {
-    const breakPoints = [
-        { width: 1, itemsToShow: 1 },
-        { width: 500, itemsToShow: 2 },
-        { width: 768, itemsToShow: 3 },
-        { width: 1200, itemsToShow: 4 },
-    ];
+
     const cards = [
         {
-            img: "https://images.pexels.com/photos/1456268/pexels-photo-1456268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            h2: "Card One",
-            p: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget velit tristique, sollicitudin leo viverra, suscipit neque. Aliquam ut facilisis urna, in pretium nibh. Morbi in leo in eros commodo volutpat ac sed dolor."
+            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
+            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
+            price: "5",
+            name: "Sagopa Kajmer",
+            date: "10 iyun 2022",
+            hall: "Elektra Events Hall"
         },
         {
-            img: "https://images.pexels.com/photos/1456268/pexels-photo-1456268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            h2: "Card One",
-            p: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget velit tristique, sollicitudin leo viverra, suscipit neque. Aliquam ut facilisis urna, in pretium nibh. Morbi in leo in eros commodo volutpat ac sed dolor."
+            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
+            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
+            price: "5",
+            name: "Sagopa Kajmer",
+            date: "10 iyun 2022",
+            hall: "Elektra Events Hall"
         },
         {
-            img: "https://images.pexels.com/photos/1456268/pexels-photo-1456268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            h2: "Card One",
-            p: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget velit tristique, sollicitudin leo viverra, suscipit neque. Aliquam ut facilisis urna, in pretium nibh. Morbi in leo in eros commodo volutpat ac sed dolor."
+            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
+            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
+            price: "5",
+            name: "Sagopa Kajmer",
+            date: "10 iyun 2022",
+            hall: "Elektra Events Hall"
         },
         {
-            img: "https://images.pexels.com/photos/1456268/pexels-photo-1456268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            h2: "Card One",
-            p: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget velit tristique, sollicitudin leo viverra, suscipit neque. Aliquam ut facilisis urna, in pretium nibh. Morbi in leo in eros commodo volutpat ac sed dolor."
+            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
+            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
+            price: "5",
+            name: "Sagopa Kajmer",
+            date: "10 iyun 2022",
+            hall: "Elektra Events Hall"
         },
         {
-            img: "https://images.pexels.com/photos/1456268/pexels-photo-1456268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            h2: "Card One",
-            p: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget velit tristique, sollicitudin leo viverra, suscipit neque. Aliquam ut facilisis urna, in pretium nibh. Morbi in leo in eros commodo volutpat ac sed dolor."
-        }, {
-            img: "https://images.pexels.com/photos/1456268/pexels-photo-1456268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            h2: "Card One",
-            p: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget velit tristique, sollicitudin leo viverra, suscipit neque. Aliquam ut facilisis urna, in pretium nibh. Morbi in leo in eros commodo volutpat ac sed dolor."
+            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
+            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
+            price: "5",
+            name: "Sagopa Kajmer",
+            date: "10 iyun 2022",
+            hall: "Elektra Events Hall"
+        },
+        {
+            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
+            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
+            price: "5",
+            name: "Sagopa Kajmer",
+            date: "10 iyun 2022",
+            hall: "Elektra Events Hall"
+        },
+        {
+            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
+            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
+            price: "5",
+            name: "Sagopa Kajmer",
+            date: "10 iyun 2022",
+            hall: "Elektra Events Hall"
+        },
+        {
+            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
+            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
+            price: "5",
+            name: "Sagopa Kajmer",
+            date: "10 iyun 2022",
+            hall: "Elektra Events Hall"
+        },
+        {
+            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
+            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
+            price: "5",
+            name: "Sagopa Kajmer",
+            date: "10 iyun 2022",
+            hall: "Elektra Events Hall"
         },
 
     ]
+    
+
+    var settings = {
+        dots: true,
+        infinite: true,
+        arrows: true,
+      
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 4,
+        initialSlide: true,
+        autoplay: true,
+        cssEase: "linear",
+
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
 
     return (
 
-        <div class="container d-flex align-items-center justify-content-center position-relative flex-wrap mt-5">
-            <h1>Tamaşalar</h1>
-            <Carousel className='caro' breakPoints={breakPoints}>
-
-                {cards.map(card => <div class="card d-flex position-relative flex-column">
-                    <div class='imgContainer'>
-                        <img alt='' src={`${card.img}`} />
-                    </div>
-                    <div class="content">
-                        <h2>{card.h2}</h2>
-                        <p>{card.p}</p>
-                    </div>
-                </div>)}
+        <div className='container theatre'>
+            <div className="row mt-5">
+                <h1 className='mt-5'>Tamaşalar</h1>
 
 
+                <Slider {...settings}>
+                    {cards.map(card =>
+                        <div>
+                            <a href="/events/concerts/sagopa-kajmer" class="event-list-item tns-item" target="" aria-hidden="true" tabindex="-1">
+                                <div class="relative h-full">
+                                    <div class="image">
+                                        <img src={`${card.bgimg}`} data-src="https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg" alt="SAGOPA KAJMER" class="bg ls-is-cached lazyloaded" />
+                                        <img src={`${card.img}`} data-src="https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png" alt="SAGOPA KAJMER" class=" ls-is-cached lazyloaded" />
+                                        <span class="btn"><span class="price">{card.price} ₼</span>-dan</span>
+                                    </div>
+                                    <div class="info">
+                                        <div class="event-name">
+                                            {card.name}
+                                        </div>
+                                        <div class="flex w-full items-center flex-1">
+                                            <div class="event-date">
+                                                {card.date}
+                                            </div>
+                                            <span class="separator">
+                                                •
+                                            </span>
+                                            <div class="venue-name">
+                                                {card.hall}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    )}
 
-            </Carousel>
-
-
-
+                </Slider>
+                
+            </div>
         </div>
+
 
 
 
