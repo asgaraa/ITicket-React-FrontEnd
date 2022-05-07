@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Slider from 'react-slick/lib/slider';
-import '../assets/sass/tourismslider.scss'
+import '../../assets/sass/tourismslider.scss'
 
-function SliderCard() {
+function TourismSlider() {
 
     const cards = [
         {
@@ -92,7 +92,7 @@ function SliderCard() {
         <div className='tourism'>
             <div className='container'>
                 <div className="row mt-5">
-                    <h1 className='mt-5 turname'>Turizm</h1>
+                    <h1 className='turname'>Turizm</h1>
 
 
                     <Slider {...settings}>
@@ -139,4 +139,4 @@ function SliderCard() {
     )
 }
 
-export default SliderCard
+export default TourismSlider

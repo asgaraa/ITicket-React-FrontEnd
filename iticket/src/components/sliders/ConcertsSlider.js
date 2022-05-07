@@ -1,9 +1,11 @@
 import React from 'react';
-
 import Slider from 'react-slick/lib/slider';
-import '../assets/sass/concertsslider.scss'
 
-function SliderCard() {
+// import Slider from 'react-slick/lib/slider';
+
+import '../../assets/sass/concertsslider.scss'
+
+function ConcertsSlider() {
     const cards = [
         {
             bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
@@ -38,6 +40,7 @@ function SliderCard() {
             hall: "Elektra Events Hall"
         },
         {
+            
             bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
             img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
             price: "5",
@@ -97,7 +100,7 @@ function SliderCard() {
 
             <Slider {...settings}>
                 {cards.map(card =>
-                    <div>
+                    <div key={card.id}>
                         <a href="/events/concerts/sagopa-kajmer" class="event-list-item tns-item" target="" aria-hidden="true" tabindex="-1">
                             <div class="relative h-full">
                                 <div class="image">
@@ -138,4 +141,4 @@ function SliderCard() {
     )
 }
 
-export default SliderCard
+export default ConcertsSlider
