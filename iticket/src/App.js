@@ -23,13 +23,13 @@ function App() {
 
 
         <Routes>
-          <Route exact path="/"  element={<Home />} />
-          <Route exact path="/allevents" element={<AllEvents/>} />
-          <Route exact path="/concerts" element={<Concerts/>} />
-          <Route exact path="/theatre" element={<Theatre/>} />
-          <Route exact path="/kids" element={<Kids/>} />
-          <Route exact path="/museums" element={<Museums/>} />
-          <Route exact path="/films" element={<Films/>} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/allevents" element={<AllEvents />} />
+          <Route exact path="/concerts" element={<Concerts />} />
+          <Route exact path="/theatre" element={<Theatre />} />
+          <Route exact path="/kids" element={<Kids />} />
+          <Route exact path="/museums" element={<Museums />} />
+          <Route exact path="/films" element={<Films />} />
         </Routes>
         <Footer />
       </div>
