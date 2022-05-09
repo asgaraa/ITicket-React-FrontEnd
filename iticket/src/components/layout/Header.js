@@ -6,29 +6,86 @@ import Box from '@mui/material/Box';
 // import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { Autocomplete, TextField } from '@mui/material';
+import { bgcolor } from '@mui/system';
+
 
 
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: "350px",
-  height: "500px",
-  bgcolor: 'background.paper',
-  border: 'px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+  search: {
+    position: 'absolute',
+    top: '10%',
+
+    // transform: 'translate(-50%, -50%)',
+    width: "100%",
+    height: "60px",
+    bgcolor: 'background.paper',
+    borderradius: '20px',
+    boxShadow: 24,
+    p: 4,
+  },
+  login: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: "350px",
+    height: "500px",
+    bgcolor: 'background.paper',
+    borderradius: '20px',
+    boxShadow: 24,
+    p: 4,
+  },
+
+  forgotstyle: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: "350px",
+    height: "250px",
+    bgcolor: 'background.paper',
+    border: 'px solid #000',
+    boxShadow: 24,
+    p: 4,
+  },
+  registerstyle: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: "300px",
+    height: "560px",
+    bgcolor: 'background.paper',
+    border: 'px solid #000',
+    boxShadow: 24,
+    p: 4,
+  },
+}
+
+
+
 
 function Header() {
 
+ const options =[
+  { title: "One Flew Over the Cuckoo's Nest", year: 1975 },
+  { title: 'Goodfellas', year: 1990 },
+  { title: 'The Matrix', year: 1999 },
+  { title: 'Seven Samurai', year: 1954 },
+ ]
+ 
 
+  
 
   const [searchOpen, setSearchOpen] = React.useState(false);
   const handleSearchOpen = () => setSearchOpen(true);
   const handleSearchClose = () => setSearchOpen(false);
+
+  const [forgotOpen, setForgotOpen] = React.useState(false);
+  const handleForgotOpen = () => setForgotOpen(true);
+  const handleForgotClose = () => setForgotOpen(false);
 
   const [loginOpen, setLoginOpen] = React.useState(false);
   const handleLoginOpen = () => setLoginOpen(true);
@@ -61,15 +118,15 @@ function Header() {
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/films">Filmlər</NavLink>
               </Nav>
               <div className="basket d-flex justify-content-end">
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/films"><i className="far fa-heart"></i></NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/films" onClick={handleSearchOpen}><i className="fas fa-search"></i></NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/films"><i className="fas fa-shopping-basket"></i> <span>0</span></NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/"><i className="far fa-heart"></i></NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleSearchOpen}><i className="fas fa-search"></i></NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/"><i className="fas fa-shopping-basket"></i> <span>0</span></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleLoginOpen}> <i className="far fa-user-circle"></i> </NavLink>
               </div>
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        <div>
+        <div className='col-12'>
           {/* Search Modal */}
           <Modal
             open={searchOpen}
@@ -77,13 +134,25 @@ function Header() {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style}>
+            <Box sx={style.search}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                Text in a modal
+                <Autocomplete
+                  id="grouped-demo"
+                  options={options}
+                  groupBy={(option) => option.firstLetter}
+                  getOptionLabel={(option) => option.title}
+                  sx={{ width: 1300, ".MuiOutlinedInput-root": {
+                    "&:focus": {
+                      borderRadius: 50,
+                      borderColor: "red",
+                      borderWidth: 10,
+                      bgcolor: "white"
+                    }
+                  } }}
+                  renderInput={(params) => <TextField {...params} label="With categories" />}
+                />
               </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Search
-              </Typography>
+
 
             </Box>
 
@@ -99,7 +168,7 @@ function Header() {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style} className='overflow-hidden'>
+            <Box sx={style.login} className='overflow-hidden'>
               <div className='modal-size'>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                   <span className='yellow'></span>
@@ -116,6 +185,7 @@ function Header() {
 
                       <Form.Control outline="yellow" type="password" placeholder="Password" />
                     </Form.Group>
+                    <Button className='login' onClick={handleForgotOpen}>Unutmusunuz?</Button>
                     <Button className="warning login" size="sm" type="submit"> Daxil Ol</Button>{' '}
 
                   </Form>
@@ -130,7 +200,35 @@ function Header() {
           </Modal>
 
 
+          {/* Forgot Pass Modal */}
+          <Modal
+            open={forgotOpen}
+            onClose={handleForgotClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style.forgotstyle} className='overflow-hidden'>
+              <div className='modal-size'>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  <span className='yellow'></span>
+                  Şifrəni Sıfırla
+                </Typography>
+                <Typography component='span' id="modal-modal-description" sx={{ mt: 2 }}>
+                  <Form>
+                    <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
 
+                      <Form.Control type="email" placeholder="Enter email" />
+
+                    </Form.Group>
+
+                    <Button className="warning login" size="sm" type="submit"> Sıfırla</Button>{' '}
+
+                  </Form>
+                </Typography>
+              </div>
+
+            </Box>
+          </Modal>
 
           {/* Register Modal */}
           <Modal
@@ -139,13 +237,51 @@ function Header() {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Text in a modal
-              </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-              </Typography>
+            <Box sx={style.registerstyle} className='overflow-hidden'>
+              <div className='modal-size'>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  <span className='yellow'></span>
+                  Register
+                </Typography>
+                <Typography component='span' id="modal-modal-body" sx={{ mt: 2 }}>
+                  <Form>
+                    <Form.Group className="mb-3 mt-4" controlId="formBasicName">
+
+                      <Form.Control type="text" placeholder="Ad" />
+
+                    </Form.Group>
+                    <Form.Group className="mb-3 mt-4" controlId="formBasicSurname">
+
+                      <Form.Control type="text" placeholder="Soy Ad" />
+
+                    </Form.Group>
+                    <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
+
+                      <Form.Control type="string" placeholder="Mobile" />
+
+                    </Form.Group>
+                    <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
+
+                      <Form.Control type="email" placeholder="Enter email" />
+
+                    </Form.Group>
+                    <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
+
+                      <Form.Control outline="yellow" type="password" placeholder="Password" />
+                    </Form.Group>
+                    <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
+
+                      <Form.Control outline="yellow" type="password" placeholder="Confirm Password" />
+                    </Form.Group>
+
+                    <Button className="warning regist mt-4" size="sm" type="submit"> Qeydiyyat</Button>{' '}
+
+                  </Form>
+
+
+                </Typography>
+              </div>
+
             </Box>
           </Modal>
         </Container>
