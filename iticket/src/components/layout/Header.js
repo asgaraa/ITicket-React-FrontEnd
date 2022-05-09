@@ -99,7 +99,7 @@ function Header() {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style}>
+            <Box sx={style} className='overflow-hidden'>
               <div className='modal-size'>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                   <span className='yellow'></span>
