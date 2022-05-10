@@ -1,39 +1,86 @@
 import React from 'react'
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+
+import "flatpickr/dist/themes/material_green.css";
+import '../../assets/sass/allevents.scss'
+import Select from 'react-select'
+
+import Flatpickr from "react-flatpickr";
+
+
+
+// import Flatpickr from "react-flatpickr";
+
+// import {DatePicker} from 'react-dater'
+// import { DatePicker } from  'react-dater'
+// import {DatePicker} from 'reac'
+
+const option = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
+
+
+
 
 function AllEvents() {
-  const top100Films = [
-    { label: 'The Shawshank Redemption', year: 1994 },
-    { label: 'The Godfather', year: 1972 },
-    { label: 'The Godfather: Part II', year: 1974 },
-    { label: 'The Dark Knight', year: 2008 },
-    { label: '12 Angry Men', year: 1957 },
-    { label: "Schindler's List", year: 1993 },
-    { label: 'Pulp Fiction', year: 1994 },
-   
-  ];
+
+  // () => {
+  //   const [date, setDate] = useState(new Date());
+
+  //   const handleCalendarClose = () => console.log("Calendar closed");
+  //   const handleCalendarOpen = () => console.log("Calendar opened");
+
+
+
+  const options = {
+    datetime:{
+      maxDate: new Date(),
+      mode: 'range',
+      altInputClass: 'hide',
+      dateFormat: 'M d Y',
+      minDate: new Date('01-01-2018'),
+  
+      // THIS `wrap` option is required when using external elements!
+      // https://flatpickr.js.org/examples/#flatpickr-external-elements
+      wrap: true,
+    },
+    
+  
+  }
+
+
+
+  // const { date } = this.state;
+
   return (
     <div className='container'>
       <div className='row'>
         <h3>Bütün Tədbirlər</h3>
         <div className='col-lg-4 col-md-6 col-sm-12'>
-          <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={top100Films}
-            // sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="Məkan Seçin" />}
-          />
+          <div className='filter'>
+          <Select options={option} />
+          </div>
+         
         </div>
         <div className='col-lg-4 col-md-6 col-sm-12'>
-          <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={top100Films}
-            // sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="Məkan Seçin" />}
-          />
+
+          <div className='filter'>
+            <Flatpickr
+              data-input
+              options={options.datetime}
+            >
+              {/* Button and input should be the children of flatpickr * /}
+      {/* as per the official flatpickr.js example above */}
+
+              {/* toggle butotn should have `data-toggle` attribute */}
+              <button data-toggle></button>
+
+              {/* input field should have `data-input` attribute */}
+              <input type="text" className='date-range flatpickr-input' placeholder="Tarix  Aralığı Seçin" data-input />
+            </Flatpickr>
+          </div>
+
         </div>
       </div>
     </div>

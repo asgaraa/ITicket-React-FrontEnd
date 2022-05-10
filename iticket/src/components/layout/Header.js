@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Autocomplete, TextField } from '@mui/material';
-import { bgcolor } from '@mui/system';
+
 
 
 
@@ -215,7 +215,7 @@ function Header() {
                 </Typography>
                 <Typography component='span' id="modal-modal-description" sx={{ mt: 2 }}>
                   <Form>
-                    <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
+                    <Form.Group className="mb-3 mt-5" controlId="formBasicForgotEmail">
 
                       <Form.Control type="email" placeholder="Enter email" />
 
@@ -255,12 +255,12 @@ function Header() {
                       <Form.Control type="text" placeholder="Soy Ad" />
 
                     </Form.Group>
-                    <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
+                    <Form.Group className="mb-3 mt-4" controlId="formBasicMobilr">
 
                       <Form.Control type="string" placeholder="Mobile" />
 
                     </Form.Group>
-                    <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
+                    <Form.Group className="mb-3 mt-4" controlId="formBasicRegistEmail">
 
                       <Form.Control type="email" placeholder="Enter email" />
 
@@ -269,7 +269,7 @@ function Header() {
 
                       <Form.Control outline="yellow" type="password" placeholder="Password" />
                     </Form.Group>
-                    <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
+                    <Form.Group className="mb-3 mt-4" controlId="formBasicConfiPassword">
 
                       <Form.Control outline="yellow" type="password" placeholder="Confirm Password" />
                     </Form.Group>
