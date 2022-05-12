@@ -48,8 +48,17 @@ function ConcertsSlider() {
             date: "10 iyun 2022",
             hall: "Elektra Events Hall"
         },
+        {
+            
+            bgimg: "https://cdn.iticket.az/event/poster_bg/hM2SYe16SbKWyutMq3rS2pgc5F8UIo6p3rQtaN0w.jpg",
+            img: "https://cdn.iticket.az/event/poster/T2YvJQuPaX6wtcUSh83mvzVlaITkqUdNGs4vPCcR.png",
+            price: "5",
+            name: "Sagopa Kajmer",
+            date: "10 iyun 2022",
+            hall: "Elektra Events Hall"
+        }
 
-
+       
     ]
     var settings = {
         dots: true,
@@ -100,7 +109,7 @@ function ConcertsSlider() {
 
             <Slider {...settings}>
                 {cards.map(card =>
-                    <div key={card.toString()}>
+                    <div className='px-3' key={card.toString()}>
                         <a href="/events/concerts/sagopa-kajmer" className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
                             <div className="relative h-full">
                                 <div className="image">

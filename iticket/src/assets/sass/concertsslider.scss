@@ -416,6 +416,7 @@
 	}
 	>.relative {
 		.image {
+			overflow: hidden;
 			img {
 				&:not(.bg) {
 					margin-top: -50px;
@@ -539,8 +540,12 @@
 		transition-duration: .3s;
 	}
 	>.relative {
+		.image{
+			overflow: hidden;
+		}
 		&:hover {
 			.image {
+				overflow: hidden;
 				img {
 					&:not(.bg) {
 						margin-top: -50px;

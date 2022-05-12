@@ -69,28 +69,34 @@ const style = {
 
 function Header() {
 
- const options =[
-  { title: "One Flew Over the Cuckoo's Nest", year: 1975 },
-  { title: 'Goodfellas', year: 1990 },
-  { title: 'The Matrix', year: 1999 },
-  { title: 'Seven Samurai', year: 1954 },
- ]
- 
+  const options = [
+    { title: "One Flew Over the Cuckoo's Nest", year: 1975 },
+    { title: 'Goodfellas', year: 1990 },
+    { title: 'The Matrix', year: 1999 },
+    { title: 'Seven Samurai', year: 1954 },
+  ]
 
-  
+
+
 
   const [searchOpen, setSearchOpen] = React.useState(false);
   const handleSearchOpen = () => setSearchOpen(true);
   const handleSearchClose = () => setSearchOpen(false);
 
   const [forgotOpen, setForgotOpen] = React.useState(false);
-  const handleForgotOpen = () => setForgotOpen(true);
+  const handleForgotOpen = () => {
+    setForgotOpen(true)
+    setLoginOpen(false)
+  }
   const handleForgotClose = () => setForgotOpen(false);
 
   const [loginOpen, setLoginOpen] = React.useState(false);
   const handleLoginOpen = () => setLoginOpen(true);
   const [registerOpen, setRegisterOpen] = React.useState(false);
-  const handleRegisterOpen = () => setRegisterOpen(true);
+  const handleRegisterOpen = () =>{
+    setRegisterOpen(true)
+    setLoginOpen(false)
+  }
   const handleLoginClose = () => setLoginOpen(false);
   const handleRegisterClose = () => setRegisterOpen(false);
 
@@ -133,23 +139,27 @@ function Header() {
             onClose={handleSearchClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
+
           >
-            <Box sx={style.search}>
+            <Box sx={style.search} style={{ backgroundColor: 'white' }}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 <Autocomplete
+                  style={{ backgroundColor: 'white' }}
                   id="grouped-demo"
                   options={options}
                   groupBy={(option) => option.firstLetter}
                   getOptionLabel={(option) => option.title}
-                  sx={{ width: 1300, ".MuiOutlinedInput-root": {
-                    "&:focus": {
-                      borderRadius: 50,
-                      borderColor: "red",
-                      borderWidth: 10,
-                      bgcolor: "white"
+                  sx={{
+                    width: 1300, ".MuiOutlinedInput-root": {
+                      "&:focus": {
+                        borderRadius: 50,
+                        borderColor: "red",
+                        borderWidth: 10,
+                        bgcolor: "white"
+                      }
                     }
-                  } }}
-                  renderInput={(params) => <TextField {...params} label="With categories" />}
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
                 />
               </Typography>
 
@@ -207,7 +217,9 @@ function Header() {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
+            
             <Box sx={style.forgotstyle} className='overflow-hidden'>
+              
               <div className='modal-size'>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                   <span className='yellow'></span>
