@@ -21,6 +21,12 @@
     background: linear-gradient(to bottom right,#fd0 0,#fd0 50%,transparent 0,transparent);
 	z-index: auto;
   }
+  
+  .slick-prev:before,
+  .slick-next:before {
+	color: black;
+	
+  }
 .event-list-item {
 	.event-date {
 		white-space: nowrap;
@@ -411,6 +417,7 @@
 	}
 	>.relative {
 		.image {
+			overflow: hidden;
 			img {
 				&:not(.bg) {
 					margin-top: -50px;
@@ -534,8 +541,12 @@
 		transition-duration: .3s;
 	}
 	>.relative {
+		.image{
+			overflow: hidden;
+		}
 		&:hover {
 			.image {
+				overflow: hidden;
 				img {
 					&:not(.bg) {
 						margin-top: -50px;

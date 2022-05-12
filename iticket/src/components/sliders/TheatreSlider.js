@@ -15,8 +15,16 @@ function TheatreSlider() {
             hall: "Elektra Events Hall"
         },
         {
-            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
-            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
+            bgimg: "https://cdn.iticket.az/event/poster_bg/NL4Oza9xgJ3FCtzsxbsu4OVosNfibm7PmPW1MT9o.jpg",
+            img: "https://cdn.iticket.az/event/poster/gm1OcnrlYiLqvnK6Bi9s4ChzcBI7Yurwn8DiEh0X.png",
+            price: "5",
+            name: "Sagopa Kajmer",
+            date: "10 iyun 2022",
+            hall: "Elektra Events Hall"
+        },
+        {
+            bgimg: "https://cdn.iticket.az/event/poster_bg/5srwI3Nfh5cGmZZlpOpk8lNYlbvmkmH5k12kIeqP.jpg",
+            img: "https://cdn.iticket.az/event/poster/UhjNubJp8u7ul0zpFdm6asOqv4lSdOelvQjwdS7u.png",
             price: "5",
             name: "Sagopa Kajmer",
             date: "10 iyun 2022",
@@ -31,6 +39,7 @@ function TheatreSlider() {
             hall: "Elektra Events Hall"
         },
         {
+            
             bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
             img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
             price: "5",
@@ -39,46 +48,16 @@ function TheatreSlider() {
             hall: "Elektra Events Hall"
         },
         {
-            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
-            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
+            
+            bgimg: "https://cdn.iticket.az/event/poster_bg/hM2SYe16SbKWyutMq3rS2pgc5F8UIo6p3rQtaN0w.jpg",
+            img: "https://cdn.iticket.az/event/poster/T2YvJQuPaX6wtcUSh83mvzVlaITkqUdNGs4vPCcR.png",
             price: "5",
             name: "Sagopa Kajmer",
             date: "10 iyun 2022",
             hall: "Elektra Events Hall"
-        },
-        {
-            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
-            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
-            price: "5",
-            name: "Sagopa Kajmer",
-            date: "10 iyun 2022",
-            hall: "Elektra Events Hall"
-        },
-        {
-            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
-            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
-            price: "5",
-            name: "Sagopa Kajmer",
-            date: "10 iyun 2022",
-            hall: "Elektra Events Hall"
-        },
-        {
-            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
-            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
-            price: "5",
-            name: "Sagopa Kajmer",
-            date: "10 iyun 2022",
-            hall: "Elektra Events Hall"
-        },
-        {
-            bgimg: "https://cdn.iticket.az/event/poster_bg/BTlzxK9BDAGN6c7aU3PavCgAiV485WD6QY4bCpS6.jpg",
-            img: "https://cdn.iticket.az/event/poster/S2B19912lKPMAoivVwJjBZTw9Z3mcya3jJn8o4Un.png",
-            price: "5",
-            name: "Sagopa Kajmer",
-            date: "10 iyun 2022",
-            hall: "Elektra Events Hall"
-        },
+        }
 
+       
     ]
 
 
@@ -86,7 +65,7 @@ function TheatreSlider() {
         dots: true,
         infinite: true,
         arrows: true,
-
+      
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 4,
