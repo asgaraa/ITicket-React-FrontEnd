@@ -6,7 +6,11 @@ import Filter from '../layout/Filter'
 function AllEvents() {
   return (
     <div className='container'>
-        <Filter/>
+            <h3 className='mt-5'>Bütün Tədbirlər</h3>
+            <div className='mt-5'>
+            <Filter/>
+            </div>
+       
     </div>
   )
 }

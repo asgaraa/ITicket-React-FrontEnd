@@ -1,8 +1,15 @@
 import React from 'react'
+import Filter from '../layout/Filter'
 
 function Kids() {
   return (
-    <div><h4>skilll Rovshan And Umid Abe Xeyrannnnn</h4></div>
+    <div className='container'>
+    <h3 className='mt-5'>Uşaqlar</h3>
+    <div className='mt-5'>
+    <Filter/>
+    </div>
+
+</div>
   )
 }
 

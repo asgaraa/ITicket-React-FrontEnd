@@ -1,8 +1,15 @@
 import React from 'react'
+import Filter from '../layout/Filter'
+
 
 function Museums() {
   return (
-    <div><h4>eheheeey</h4></div>
+    <div className='container'>
+      <h3 className='mt-5'>Muzeylər</h3>
+      <div className='mt-5'>
+        <Filter />
+      </div>
+    </div>
   )
 }
 

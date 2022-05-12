@@ -1,8 +1,15 @@
 import React from 'react'
+import Filter from '../layout/Filter'
 
 function Films() {
   return (
-    <div><h5>aslfsdagmkfsbgkafsdbn</h5></div>
+    <div className='container'>
+            <h3 className='mt-5'>Filmlər</h3>
+            <div className='mt-5'>
+            <Filter/>
+            </div>
+       
+    </div>
   )
 }
 
