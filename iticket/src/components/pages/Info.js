@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Support from '../Infos/Support.js'
 import '../../assets/sass/infos/info.scss'
+import Terms from '../Infos/Terms.js'
 
 function Info() {
     return (
@@ -10,6 +11,7 @@ function Info() {
                 <h3 className='mt-5'>Dəstək</h3>
                 <div className='col-lg-8 col-md-9 col-sm-12  mt-4'>
                     <Support/>
+                    <Terms/>
                 </div>
                 <div className='col-lg-3 col-md-6 col-sm-12 mt-4 sidebar'>
                     <ul>
