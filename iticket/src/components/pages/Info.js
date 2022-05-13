@@ -7,6 +7,7 @@ import ETicket from '../Infos/ETicket.js'
 import Refund from '../Infos/Refund.js'
 import Privacy from '../Infos/Privacy.js'
 import About from '../Infos/About.js'
+import Contact from '../Infos/Contacts.js'
 
 function Info() {
     return (
@@ -20,6 +21,7 @@ function Info() {
                     <Terms/>
                     <ETicket/>
                     <Privacy/>
+                    <Contact/>
                 </div>
                 <div className='col-lg-3 col-md-6 col-sm-12 mt-4 sidebar'>
                     <ul>
