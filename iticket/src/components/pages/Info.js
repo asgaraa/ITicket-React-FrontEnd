@@ -8,6 +8,7 @@ import Refund from '../Infos/Refund.js'
 import Privacy from '../Infos/Privacy.js'
 import About from '../Infos/About.js'
 import Contact from '../Infos/Contacts.js'
+import Faq from '../Infos/Faq.js'
 
 function Info() {
     return (
@@ -15,6 +16,7 @@ function Info() {
             <div className='row justify-content-between'>
                
                 <div className='col-lg-8 col-md-9 col-sm-12  mt-4'>
+                    <Faq/>
                     <About/>
                     <Support/>
                     <Refund/>
