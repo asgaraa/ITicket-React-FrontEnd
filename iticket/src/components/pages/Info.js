@@ -4,6 +4,9 @@ import Support from '../Infos/Support.js'
 import '../../assets/sass/infos/info.scss'
 import Terms from '../Infos/Terms.js'
 import ETicket from '../Infos/ETicket.js'
+import Refund from '../Infos/Refund.js'
+import Privacy from '../Infos/Privacy.js'
+import About from '../Infos/About.js'
 
 function Info() {
     return (
@@ -11,9 +14,12 @@ function Info() {
             <div className='row justify-content-between'>
                
                 <div className='col-lg-8 col-md-9 col-sm-12  mt-4'>
+                    <About/>
                     <Support/>
+                    <Refund/>
                     <Terms/>
                     <ETicket/>
+                    <Privacy/>
                 </div>
                 <div className='col-lg-3 col-md-6 col-sm-12 mt-4 sidebar'>
                     <ul>
