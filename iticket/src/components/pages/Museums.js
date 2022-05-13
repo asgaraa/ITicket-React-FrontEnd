@@ -65,7 +65,7 @@ function Museums() {
       </div>
       <div className='row'>
         {cards.map(card =>
-          <div className="col-lg-4 col-md-6 col-sm-12">
+          <div className="col-lg-4 col-md-6 col-sm-12 mt-5">
             <div className='px-3' key={card.toString()}>
               <a href="/events/concerts/sagopa-kajmer" className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
                 <div className="relative h-full">
