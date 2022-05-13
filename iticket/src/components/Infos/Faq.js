@@ -9,6 +9,13 @@ function Faq() {
   const [minors, setMinors] = React.useState(false);
   const [promo, setPromo] = React.useState(false);
   const [mydetail, setMydetail] = React.useState(false);
+  const [stolen, setStolen] = React.useState(false);
+  const [returntick, setReturntick] = React.useState(false);
+  const [canceled, setCanceled] = React.useState(false);
+  const [outside, setOutside] = React.useState(false);
+  const [venue, setVenue] = React.useState(false);
+  const [reuqired, setRequired] = React.useState(false);
+
   return (
     <div>
       <h2 className='mt-5'>Ən Çox Verilən Suallar</h2>
@@ -71,18 +78,18 @@ function Faq() {
 
         </div>
         <div className='faq-ques mt-3'>
-          <button className='but' onClick={() => setMydetail(!mydetail)} style={{ border: mydetail ? 'none' : '' }} >8. Biletlərim itirildikdə, oğurlandıqda, zədələndikdə nə etməliyəm?</button>
+          <button className='but' onClick={() => setStolen(!stolen)} style={{ border: stolen ? 'none' : '' }} >8. Biletlərim itirildikdə, oğurlandıqda, zədələndikdə nə etməliyəm?</button>
 
-          <div className='answer' style={{ display: mydetail ? 'block' : 'none' }}>
+          <div className='answer' style={{ display: stolen ? 'block' : 'none' }}>
             <p>Tədbirdən asılı olaraq fiziki Biletlər itirildikdə və ya oğurlandıqda biletin dəyərinin 15% - ni tutmaqla bərpa edilə bilər. E- biletləri onlayn hesabınızdan yenidən yükləyə bilərsiniz.
               Xahiş edirik, unutmayın ki, suyun, palçığın, istiliyin və ya günəş işığının təsiri biletinizə zərər verə bilər. Əgər biletin hər hansı bir hissəsi zədələnibsə, sizə tədbirin keçirilmə məkanına daxil olmağa imtina edilə bilər.</p>
           </div>
 
         </div>
         <div className='faq-ques mt-3'>
-          <button className='but' onClick={() => setMydetail(!mydetail)} style={{ border: mydetail ? 'none' : '' }} >9. Biletləri geri qaytarmaq məcburiyyəti olduqda nə etməliyəm?</button>
+          <button className='but' onClick={() => setReturntick(!returntick)} style={{ border: returntick ? 'none' : '' }} >9. Biletləri geri qaytarmaq məcburiyyəti olduqda nə etməliyəm?</button>
 
-          <div className='answer' style={{ display: mydetail ? 'block' : 'none' }}>
+          <div className='answer' style={{ display: returntick ? 'block' : 'none' }}>
             <p>Biletlərinizi diqqətlə seçin. Ödəniş biletlərin sifarişi təsdiqləndikdən dərhal sonra həyata keçiriləcək.
               Tədbirin baş tutmasına 48 saat və ya daha çox müddət qaldıqda bilet geri qaytarılarsa və ya dəyişdirilərsə, biletin dəyərinin 30%-i tutulur.
               Tədbirin baş tutmasına 48 saat və ya daha az müddət qaldıqda bilet geri qaytarılmır və ya dəyişdirilmir.
@@ -91,9 +98,9 @@ function Faq() {
 
         </div>
         <div className='faq-ques mt-3'>
-          <button className='but' onClick={() => setMydetail(!mydetail)} style={{ border: mydetail ? 'none' : '' }} >10. Tədbir təxirə salınarsa, məkanı dəyişərsə və ya ləğv olunarsa, biletlərimi dəyişə, qaytara bilərəmmi?</button>
+          <button className='but' onClick={() => setCanceled(!canceled)} style={{ border: canceled ? 'none' : '' }} >10. Tədbir təxirə salınarsa, məkanı dəyişərsə və ya ləğv olunarsa, biletlərimi dəyişə, qaytara bilərəmmi?</button>
 
-          <div className='answer' style={{ display: mydetail ? 'block' : 'none' }}>
+          <div className='answer' style={{ display: canceled ? 'block' : 'none' }}>
             <p>Tədbir təxirə salınarsa və ya məkanı dəyişərsə, biletləriniz yeni zamana və ya yeni məkana etibarlı olacaqdır.
               Yeni tarix və ya məkan sizi qane etmədiyi təqdirdə, biletlərinizi qaytarıb ödənişinizi tam geri ala bilərsiniz.
               Tədbir ləğv olunarsa, ödənişiniz geri qaytarılacaqdır.</p>
@@ -101,26 +108,26 @@ function Faq() {
 
         </div>
         <div className='faq-ques mt-3'>
-          <button className='but' onClick={() => setMydetail(!mydetail)} style={{ border: mydetail ? 'none' : '' }} >11. Mən Azərbaycandan kənarda yaşayıram. Bilet ala bilərəm?</button>
+          <button className='but' onClick={() => setOutside(!outside)} style={{ border: outside ? 'none' : '' }} >11. Mən Azərbaycandan kənarda yaşayıram. Bilet ala bilərəm?</button>
 
-          <div className='answer' style={{ display: mydetail ? 'block' : 'none' }}>
+          <div className='answer' style={{ display: outside ? 'block' : 'none' }}>
             <p>Bəli, ala bilərsiniz. Biletləri istənilən yer və zaman iTicket.AZ veb səhifəmiz və ya mobil əlavəmiz vasitəsilə onlayn əldə edə bilərsiniz.</p>
           </div>
 
         </div>
         <div className='faq-ques mt-3'>
-          <button className='but' onClick={() => setMydetail(!mydetail)} style={{ border: mydetail ? 'none' : '' }} >12. Məkana daxil olmaq üçün nə etməliyəm?</button>
+          <button className='but' onClick={() => setVenue(!venue)} style={{ border: venue ? 'none' : '' }} >12. Məkana daxil olmaq üçün nə etməliyəm?</button>
 
-          <div className='answer' style={{ display: mydetail ? 'block' : 'none' }}>
+          <div className='answer' style={{ display: venue ? 'block' : 'none' }}>
             <p>Məkana daxil olmaq üçün tamaşaçıların etibarlı bileti olmalıdır.
               Yaşı 16-dan az olan bilet sahibləri yalnız əlavə bilet və etibarlı şəxsiyyət vəsiqəsi olan böyüklərin (18+) müşayiəti ilə tədbirdə iştirak edə bilərlər.</p>
           </div>
 
         </div>
         <div className='faq-ques mt-3'>
-          <button className='but' onClick={() => setMydetail(!mydetail)} style={{ border: mydetail ? 'none' : '' }} >13. COVID-19 pasportum yoxdur? Tədbirdə iştirak edə bilərəm?</button>
+          <button className='but' onClick={() => setRequired(!reuqired)} style={{ border: reuqired ? 'none' : '' }} >13. COVID-19 pasportum yoxdur? Tədbirdə iştirak edə bilərəm?</button>
 
-          <div className='answer' style={{ display: mydetail ? 'block' : 'none' }}>
+          <div className='answer' style={{ display: reuqired ? 'block' : 'none' }}>
             <p>18 yaşdan yuxarı şəxslər COVID-19 vaksin sertifikatı, COVİD-19 immunitet sertifikatı və ya COVID-19 əks-göstəriş sertifikatı təqdim etməklə tədbirlərə daxil ola bilərlər.
               COVID-19 sertifikatı olmayan tamaşaçılar tədbirə buraxılmır və əldə etdikləri biletlər geri qaytarılmır.</p>
           </div>
