@@ -211,10 +211,15 @@ $ig-shadow: 0 2px 2px lighten($ig-black, 10%);
   &.fullscreen {
     background: $ig-black;
   }
+//   .image-gallery-content .image-gallery-slide .image-gallery-image {
+//    min-height: 100vh  !important;
+// }
+
+
 
   .image-gallery-slide .image-gallery-image {
-    // max-height: calc(100vh - 80px); // 80 px for the thumbnail space
-    height:100vh ;
+    //  max-height: calc(100vh - 80px); // 80 px for the thumbnail space
+    min-height:95vh  ;
     object-fit: none !important;
   }
 
