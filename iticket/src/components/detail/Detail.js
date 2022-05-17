@@ -66,7 +66,7 @@ function Detail() {
 
                 </div>
             </div>
-            <div >
+            <div className='mt-5' >
                 <SeatsioSeatingChart
                     workspaceKey="publicDemoKey"
                     pricing={[
