@@ -1,7 +1,14 @@
 import React from 'react'
+import { SeatsioSeatingChart } from '@seatsio/seatsio-react'
+// import Seatmap from 'react-seatmap';
+// import SeatPicker from "react-seat-picker";
 import '../../assets/sass/details/detail.scss'
 
 function Detail() {
+    const { format: formatPrice } = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
     return (
         <div>
             <div className='event-image'>
@@ -56,95 +63,55 @@ function Detail() {
 
                         </div>
                     </div>
-                    <div className='col-lg-12 col-md-12 col-sm-12'>
-                        <div>
-                            <div class="movie-container">
-                                <label>
-                                    Pick A Movie:
-                                </label>
-                                <select id="movie">
-                                    <option value="10">Matrix ($10)</option>
-                                    <option value="25">Avengers ($25)</option>
-                                    <option value="16">Joker ($16)</option>
-                                    <option value="9">Lion King ($9)</option>
-                                </select>
-                            </div>
 
-                            <ul class="showcase">
-                                <li>
-                                    <div class="seat"></div>
-                                    <small>N/A</small>
-                                </li>
-                                <li>
-                                    <div class="seat occupied"></div>
-                                    <small>Occupied</small>
-                                </li>
-                                <li>
-                                    <div class="seat selected"></div>
-                                    <small>Selected</small>
-                                </li>
-                            </ul>
-
-                            <div class="container">
-                                <div class="screen"></div>
-
-                                <div class="row">
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat occupied"></div>
-                                    <div class="seat occupied"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="seat"></div>
-                                    <div class="seat occupied"></div>
-                                    <div class="seat occupied"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="seat occupied"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat occupied"></div>
-                                    <div class="seat occupied"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat occupied"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat occupied"></div>
-                                    <div class="seat"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat"></div>
-                                    <div class="seat occupied"></div>
-                                    <div class="seat occupied"></div>
-                                    <div class="seat occupied"></div>
-                                </div>
-                            </div>
-                            <p class="text">You have selected <span id="count">0</span>
-                                seats for a price of $<span id="total">0</span>
-                            </p>
-                        </div>
-                    </div>
                 </div>
+            </div>
+            <div >
+                <SeatsioSeatingChart
+                    workspaceKey="publicDemoKey"
+                    pricing={[
+                        {
+                            category: 1,
+                            ticketTypes: [
+                                {
+                                    ticketType: "adult",
+                                    price: 30,
+                                    label: "For adults",
+                                    description: "Includes hot meal and a drink"
+                                },
+                                {
+                                    ticketType: "child",
+                                    price: 20,
+                                    label: "For children",
+                                    description: "Includes burger and fries"
+                                }
+                            ]
+                        },
+                        {
+                            category: 2,
+                            ticketTypes: [
+                                {
+                                    ticketType: "adult",
+                                    price: 40,
+                                    label: "For adults",
+                                    description: "Includes hot meal and a drink"
+                                },
+                                {
+                                    ticketType: "child",
+                                    price: 30,
+                                    label: "For children",
+                                    description: "Includes burger and fries"
+                                }
+                            ]
+                        },
+                        { category: 3, price: 50 }
+                    ]}
+                    priceFormatter={(price) => formatPrice(price)}
+                    openDraftDrawing="true"
+                    event="smallTheatreEvent"
+                    region="eu"
+                    language="pt"
+                />
             </div>
         </div>
 
