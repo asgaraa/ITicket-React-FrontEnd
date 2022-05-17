@@ -20,6 +20,7 @@ import Privacy from './components/Infos/Privacy';
 import Refund from './components/Infos/Refund';
 import Support from './components/Infos/Support';
 import Terms from './components/Infos/Terms';
+import Detail from './components/detail/Detail';
 
 
 
@@ -48,6 +49,7 @@ function App() {
           <Route exact path="/refund" element={<Refund />} />
           <Route exact path="/support" element={<Support />} />
           <Route exact path="/terms" element={<Terms />} />
+          <Route exact path="/detail" element={<Detail />} />
         </Routes>
         <Footer />
       </div>

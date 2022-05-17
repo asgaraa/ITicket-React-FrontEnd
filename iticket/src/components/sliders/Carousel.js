@@ -26,7 +26,7 @@ function Carousel() {
   }, []);
 
   const loadOrders = async () => {
-    debugger
+  
     const result = await axios.get("https://localhost:44351/api/Slider/GetAll");
     setImage(result.data);
 
@@ -35,7 +35,7 @@ function Carousel() {
 
 let fullImgs = [];
 images.forEach(image => {
-  debugger
+
   let data = "data:image/jpeg;base64,";
   let fullImg = data + image.image;
   var obj = {
