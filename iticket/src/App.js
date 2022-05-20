@@ -22,6 +22,7 @@ import Support from './components/Infos/Support';
 import Terms from './components/Infos/Terms';
 import Detail from './components/detail/Detail';
 import Basket from './components/pages/basketpage/Basket';
+import Profile from './components/pages/profile/Profile';
 
 
 
@@ -41,7 +42,7 @@ function App() {
           <Route exact path="/kids" element={<Kids />} />
           <Route exact path="/museums" element={<Museums />} />
           <Route exact path="/films" element={<Films />} />
-          {/* <Route exact path="/support" element={<Info />} /> */}
+  
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contacts />} />
           <Route exact path="/eticket" element={<ETicket />} />
@@ -52,6 +53,7 @@ function App() {
           <Route exact path="/terms" element={<Terms />} />
           <Route exact path="/detail" element={<Detail />} />
           <Route exact path="/basket" element={<Basket />} />
+          <Route exact path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </div>
