@@ -21,6 +21,7 @@ import Refund from './components/Infos/Refund';
 import Support from './components/Infos/Support';
 import Terms from './components/Infos/Terms';
 import Detail from './components/detail/Detail';
+import Basket from './components/pages/basketpage/Basket';
 
 
 
@@ -50,6 +51,7 @@ function App() {
           <Route exact path="/support" element={<Support />} />
           <Route exact path="/terms" element={<Terms />} />
           <Route exact path="/detail" element={<Detail />} />
+          <Route exact path="/basket" element={<Basket />} />
         </Routes>
         <Footer />
       </div>
