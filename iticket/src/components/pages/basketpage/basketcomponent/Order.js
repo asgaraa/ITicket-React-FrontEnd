@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Button, Form } from 'react-bootstrap'
 
 import '../../../../assets/sass/basket/order.scss'
 
@@ -36,9 +37,26 @@ function Order() {
                     <div className='mt-4 cashtab'>
                         <h2 className='mt-5'>Kartınızı Qeyd Edin</h2>
 
-                        <div className='etiko'>
-                            <p>Elektron Bilet</p>
+                        <div className=''>
+                            <Form.Group className="mb-3 cardcode" controlId="formBasicNumberCode">
+                              
+                                <Form.Control type="number" placeholder="XXXX-XXXX-XXXX-XXXX" />
+
+                            </Form.Group>
+                           
                         </div>
+                        <div className='sendtick'>
+                                <div>
+                                <Button  className='canceltick' type="submit">
+                                    Ləğv Et
+                                </Button>
+                                </div>
+                          
+                                <div>
+                                <Button  className='endtick' type="submit">
+                                    Sifarişi Tamamla
+                                </Button></div>
+                            </div>
 
                     </div>
 
