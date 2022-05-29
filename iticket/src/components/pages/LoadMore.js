@@ -77,7 +77,8 @@ function LoadMore() {
                
 
             </div>
-            <button className="btn btn-primary loadmore mt-4" onClick={showMoreItems}>Load More</button>
+            <div className="load">   <button className="btn btn-primary loadmore mt-4" onClick={showMoreItems}>Load More</button></div>
+         
         </div>
 
     )
