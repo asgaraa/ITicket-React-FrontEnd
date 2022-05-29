@@ -77,8 +77,8 @@ function Header() {
   ]
 
   //Prop for api start
-  const [name, setName] = useState();
-  const [surname, setSurname] = useState();
+  const [fullname, setFullname] = useState();
+  const [username, setUsername] = useState();
   const [number, setNumber] = useState();
   const [mail, setMail] = useState();
   const [password, setPassword] = useState();
@@ -91,12 +91,12 @@ function Header() {
     e.preventDefault();
     await axios.post('/api/account/register', {
 
-      Email:mail,
-      Password:password,
-      Name:name,
-      Surname:surname,
-      PhoneNumber:number,
-      UserName:name
+    
+      Email: mail,
+      Password: password,
+      FullName: fullname,
+      UserName: username,
+      PhoneNumber: number,
       
 
     }, { 'Content-Type': 'multipart/form-data' })
@@ -293,12 +293,12 @@ function Header() {
                 <Typography component='span' id="modal-modal-body" sx={{ mt: 2 }}>
                   <Form onSubmit={(e) => register(e)}>
 
-                    <Form.Group className="mb-3 mt-4" controlId="formBasicName">
-                      <Form.Control type="text" onChange={(e) => setName(e.target.value)} placeholder="Ad" />
+                  <Form.Group className="mb-3 mt-4" controlId="formBasicName">
+                      <Form.Control type="text" onChange={(e) => setFullname(e.target.value)} placeholder="Ad / Soyad" />
                     </Form.Group>
 
                     <Form.Group className="mb-3 mt-4" controlId="formBasicSurname">
-                      <Form.Control type="text" placeholder="Soy Ad" onChange={(e) => setSurname(e.target.value)} />
+                      <Form.Control type="text" placeholder="İstifadəçi Adı" onChange={(e) => setUsername(e.target.value)} />
                     </Form.Group>
 
                     <Form.Group className="mb-3 mt-4" controlId="formBasicMobilr">
@@ -311,10 +311,6 @@ function Header() {
 
                     <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
                       <Form.Control outline="yellow" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-                    </Form.Group>
-
-                    <Form.Group className="mb-3 mt-4" controlId="formBasicConfiPassword">
-                      <Form.Control outline="yellow" type="password" placeholder="Confirm Password" />
                     </Form.Group>
 
                     <Button className="warning regist mt-4" size="sm" type="submit"> Qeydiyyat</Button>{' '}
