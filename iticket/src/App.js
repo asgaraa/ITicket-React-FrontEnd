@@ -55,7 +55,7 @@ function App() {
           <Route exact path="/refund" element={<Refund />} />
           <Route exact path="/support" element={<Support />} />
           <Route exact path="/terms" element={<Terms />} />
-          <Route exact path="/detail" element={<Detail />} />
+          <Route exact path="/detail/:id" element={<Detail />} />
           <Route exact path="/basket" element={<Basket />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/myorders" element={<MyOrders />} />
