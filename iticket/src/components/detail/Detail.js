@@ -54,7 +54,7 @@ function Detail(props) {
     return (
         <div>
             <div className='event-image'>
-                {/* <img className='imag' src="https://cdn.iticket.az/event/cover/XHVymjWZKrh7pMeNgCy7cqmukHya71ubiNkMhOeD.jpg" alt="" /> */}
+               
                 <img src={`data:image/jpeg;base64,${detailimagen}`} alt="" className='imag' />
             </div>
 
