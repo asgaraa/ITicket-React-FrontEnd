@@ -16,7 +16,6 @@ function Concerts() {
 
     let startAndEnd = date.split('to');
 
-
     const showMoreItems = () => {
         setVisible((prevValue) => prevValue + 3)
     }
@@ -33,14 +32,19 @@ function Concerts() {
         console.log(id);
     }
 
-    const result = items.filter(event => event.price >= price[0] && event.price <= price[1] && moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD'));
+    // let result = items.filter(event => event.price >= price[0] && event.price <= price[1] && moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD'));
+    let result = items;
+    if (hallid != null) {
+        result = result.filter(item => parseInt(item.hallId) === parseInt(hallid))
+    }
+   
+    if(date.length !== 0){
+        result = result.filter(item => moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(item.date).format('YYYY/MM/DD') &&  moment(startAndEnd[1]).format('YYYY/MM/DD') > moment(item.date).format('YYYY/MM/DD'))
+    }
 
-    items.forEach(event => {
-        console.log(moment(event.date).format('YYYY/MM/DD'));
-    });
-
-    console.log(moment(startAndEnd[0]).format('YYYY/MM/DD'));
-
+    if(price != null){
+        result = result.filter(item => item.price > price[0] && item.price < price[1])
+    }
 
     return (
         <div className='container'>
@@ -49,6 +53,7 @@ function Concerts() {
                 <Filter hallId={setHallId} date={setDate} setPrice={setPrice} getPrice={price} />
             </div>
             <div className='row '>
+               
                 {result.slice(0, visible).map(card =>
                     <div className="col-4 mb-3" key={card.id}>
                         <Link to={`/detail/${card.id}`} onClick={() => Detail(card.id)} className="event-list-item tns-item" target="" aria-hidden="true" tabIndex="-1">
