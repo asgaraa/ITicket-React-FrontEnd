@@ -2,14 +2,19 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import moment from 'moment'
+
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react'
-// import Seatmap from 'react-seatmap';
-// import SeatPicker from "react-seat-picker";
+
+
 import '../../assets/sass/details/detail.scss'
+import { Form } from 'react-bootstrap';
 
 function Detail(props) {
     const { id } = useParams();
 
+
+
+    ;
     const [detailimagen, setDetailimage] = useState();
     const [eventdate, setEventdate] = useState();
     const [eventtime, setEventtime] = useState();
@@ -25,9 +30,13 @@ function Detail(props) {
 
     }
 
-  
+    // let chart = new window.seatsio.SeatingChart({
+    //     divId: 'chart',
+    //     workspaceKey: 'publicDemoKey'
+    // })
 
-
+    let charta;
+    // console.log(chart.selectedObjects);
 
     useEffect(() => {
 
@@ -37,24 +46,31 @@ function Detail(props) {
                 return result.data;
             })
             .then(function (result) {
-                debugger
+
                 setDetailimage(result.detailImage)
                 setEventdate(result.date)
                 setEventtime(result.date)
                 setEventhall(result.hall.name)
             });
 
-       
+
     });
+
+
+
 
     const { format: formatPrice } = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
     });
+    let selectedSeats = [];
+    // console.log(selectedSeats);
+    let charto;
+
     return (
         <div>
             <div className='event-image'>
-               
+
                 <img src={`data:image/jpeg;base64,${detailimagen}`} alt="" className='imag' />
             </div>
 
@@ -109,53 +125,73 @@ function Detail(props) {
                 </div>
             </div>
             <div className='mt-5 seathall' >
-                <SeatsioSeatingChart
-                    workspaceKey="publicDemoKey"
-                    pricing={[
-                        {
-                            category: 1,
-                            ticketTypes: [
-                                {
-                                    ticketType: "adult",
-                                    price: 30,
-                                    label: "For adults",
-                                    description: "Includes hot meal and a drink"
-                                },
-                                {
-                                    ticketType: "child",
-                                    price: 20,
-                                    label: "For children",
-                                    description: "Includes burger and fries"
-                                }
-                            ]
-                        },
-                        {
-                            category: 2,
-                            ticketTypes: [
-                                {
-                                    ticketType: "adult",
-                                    price: 40,
-                                    label: "For adults",
-                                    description: "Includes hot meal and a drink"
-                                },
-                                {
-                                    ticketType: "child",
-                                    price: 30,
-                                    label: "For children",
-                                    description: "Includes burger and fries"
-                                }
-                            ]
-                        },
-                        { category: 3, price: 50 }
-                    ]}
-                    priceFormatter={(price) => formatPrice(price)}
-                    openDraftDrawing="true"
-                    event="smallTheatreEvent"
-                    region="eu"
-                    language="en"
-                />
+
+                <Form>
+
+                    <SeatsioSeatingChart
+
+                        onObjectSelected={
+                            function (obj) {
+                                // add the selected seat id to the array
+                                selectedSeats.push(obj.label);
+                                console.log(selectedSeats);
+                            }
+                        }
+
+                        onObjectDeselected={
+                            function (obj) {
+                                // remove the deselected seat id from the array
+                                var index = selectedSeats.indexOf(obj.label);
+                                if (index !== -1) selectedSeats.splice(index, 1);
+                                console.log(selectedSeats);
+                            }
+                        }
+
+
+                        workspaceKey="publicDemoKey"
+                        // pricing={[
+                        //     {
+
+                        //         category: 1,
+                        //         ticketTypes: [
+                        //             {
+
+                        //                 ticketType: "event",
+                        //                 price: 30,
+                        //                 label: "For event",
+                        //                 description: "Salam meleyki"
+                        //             }
+                        //         ]
+                        //     },
+                        //     {
+                        //         category: 2,
+                        //         ticketTypes: [
+                        //             {
+                                      
+                        //                 ticketType: "event",
+                        //                 price: 40,
+                        //                 label: "For event",
+                        //                 description: "Salam meleyki"
+                        //             }
+                        //         ]
+                        //     }
+
+                        // ]}
+                        id={`seathall`}
+                        // onRenderStarted={createdChart => { charto = createdChart }}
+                        selectedObjectsInputName={'selectedSeatsField'}
+                        priceFormatter={(price) => formatPrice(price)}
+                        openDraftDrawing={false}
+                        event="smallTheatreEvent"
+                        region="eu"
+                        language="en"
+
+                    />
+                </Form>
+
+
             </div>
-        </div>
+        </div >
 
     )
 }
