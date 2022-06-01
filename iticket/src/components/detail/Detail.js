@@ -35,7 +35,7 @@ function Detail(props) {
     //     workspaceKey: 'publicDemoKey'
     // })
 
-    let charta;
+    
     // console.log(chart.selectedObjects);
 
     useEffect(() => {
@@ -65,7 +65,7 @@ function Detail(props) {
     });
     let selectedSeats = [];
     // console.log(selectedSeats);
-    let charto;
+  
 
     return (
         <div>
