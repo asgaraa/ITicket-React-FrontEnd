@@ -84,7 +84,7 @@ function TheatreSlider() {
                                             </div>
                                             <div className="flex w-full items-center flex-1">
                                                 <div className="event-date">
-                                                    {card.date}
+                                                {card.date.substring(0, 10)}
                                                 </div>
                                                 <span className="separator">
                                                     •
