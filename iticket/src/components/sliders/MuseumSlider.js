@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Slider from 'react-slick/lib/slider';
+import '../../assets/sass/sliders/museumslider.scss'
 
 function MuseumSlider() {
     const [events, setEvent] = useState([]);
@@ -58,10 +59,10 @@ function MuseumSlider() {
         console.log(id);
     }
     return (
-        <div className='tourism'>
+        <div className='museum'>
             <div className='container'>
                 <div className="row mt-5">
-                    <h1 className='turname'>Muzeylər</h1>
+                    <h1 className='museumname'>Muzeylər</h1>
 
 
                     <Slider {...settings}>
