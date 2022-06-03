@@ -12,7 +12,7 @@ function MuseumSlider() {
     }, []);
 
     const loadEvents = async () => {
-        const result = await axios.get("https://localhost:44351/api/event/getallevents");
+        const result = await axios.get("/api/event/GetByCateId/8");
         setEvent(result.data);
     }
     var settings = {
