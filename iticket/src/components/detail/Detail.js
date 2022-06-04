@@ -15,6 +15,7 @@ function Detail() {
     const [detailimagen, setDetailimage] = useState();
     const [eventdate, setEventdate] = useState();
     const [eventtime, setEventtime] = useState();
+    const [eventprice, setEventprice] = useState();
 
     const [eventhall, setEventhall] = useState();
     function initPromise() {
@@ -37,6 +38,7 @@ function Detail() {
                 setEventdate(result.date)
                 setEventtime(result.date)
                 setEventhall(result.hall.name)
+                setEventprice(result.price)
             });
 
 
@@ -58,6 +60,11 @@ function Detail() {
         <div>
             <div className='event-image'>
                 <img src={`data:image/jpeg;base64,${detailimagen}`} alt="" className='imag' />
+                <div className='deat'>
+                    <span className='pricedet'>{eventprice} ₼-dan</span>
+                    <button className='buthearth'><i className="far fa-heart"></i></button>
+                </div>
+
             </div>
 
             <div className='container'>
