@@ -1,72 +1,209 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import moment from 'moment'
-
-import { SeatsioSeatingChart } from '@seatsio/seatsio-react'
+import moment from 'moment';
+import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
 
 
 import '../../assets/sass/details/detail.scss'
 import { Form } from 'react-bootstrap';
 
 function Detail() {
-
     const { id } = useParams();
-    const [detailimagen, setDetailimage] = useState();
-    const [eventdate, setEventdate] = useState();
-    const [eventtime, setEventtime] = useState();
-    const [eventprice, setEventprice] = useState();
+    const [data, setData] = useState();
+    const [soldSeat, setSoldSeats] = useState([]);
 
-    const [eventhall, setEventhall] = useState();
-    function initPromise() {
-        const response = axios.get(`/api/Event/GetById/${id}`)
-        return new Promise(function (res, rej) {
-            res(response);
-        })
-    }
 
+
+    // Implementation
     useEffect(() => {
+        function fetchSampleData() {
+            let method = 'get' // ex. get | post | put | delete , etc
+            return axios[method](`/api/Event/GetById/${id}`)
+                .then((response) => {
+                    // success
+                    //-> save response to state, notification
+                    setData(response.data) // pass to finish
+                })
+                .catch((error) => {
+                    // failed
+                    //-> prepare, notify, handle error
 
-        initPromise()
-            .then(function (result) {
-                // "initResolve"
-                return result.data;
-            })
-            .then(function (result) {
+                    return false // pass to finish
+                })
+                .then((resultBoolean) => {
+                    // do something after success or error
 
-                setDetailimage(result.detailImage)
-                setEventdate(result.date)
-                setEventtime(result.date)
-                setEventhall(result.hall.name)
-                setEventprice(result.price)
-            });
+                    return resultBoolean // for await purpose
+                });
+        }
+        function fetchResult() {
+            let success = fetchSampleData()
+            if (success) {
+                setData(success.data)
+            } else {
+            }
+        }
 
+        function loadSoldSeats() {
+            let method = 'get' // ex. get | post | put | delete , etc
+            return axios[method](`https://localhost:44351/api/Order/GetByEventId/${id}`)
+                .then((response) => {
+                    // success
+                    //-> save response to state, notification
+                    // pass to finish
+                    setSoldSeats(response.data)
+                })
+                .catch((error) => {
+                    // failed
+                    //-> prepare, notify, handle error
 
-    });
+                    return false // pass to finish
+                })
+                .then((resultBoolean) => {
+                    // do something after success or error
 
-    const { format: formatPrice } = new Intl.NumberFormat("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-    });
+                    return resultBoolean // for await purpose
+                });
+        }
+        fetchResult()
+        loadSoldSeats()
+    }, [id]);
 
+    //Helpers start
     let selectedSeats = [];
-
     if (JSON.parse(localStorage.getItem('seats')) != null) {
         selectedSeats = JSON.parse(localStorage.getItem('seats'))
     }
+    const { format: formatPrice } = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "AZN"
+    });
+
+    let seats = [
+        "A-1",
+        "A-2",
+        "A-3",
+        "A-4",
+        "A-5",
+        "A-6",
+        "A-7",
+        "A-8",
+        "A-9",
+        "A-10",
+        "A-11",
+        "A-12",
+        "A-13",
+        "A-14",
+        "A-15",
+        "A-16",
+        "A-17",
+        "A-18",
+        "A-19",
+        "A-20",
+        "A-21",
+        "A-22",
+        "A-23",
+        "A-24",
+        "A-25",
+        "A-26",
+        "A-27",
+        "A-28",
+        "A-29",
+        "A-30",
+
+        "B-1",
+        "B-2",
+        "B-3",
+        "B-4",
+        "B-5",
+        "B-6",
+        "B-7",
+        "B-8",
+        "B-9",
+        "B-10",
+        "B-11",
+        "B-12",
+        "B-13",
+        "B-14",
+        "B-15",
+        "B-16",
+        "B-17",
+        "B-18",
+        "B-19",
+        "B-20",
+        "B-21",
+        "B-22",
+        "B-23",
+        "B-24",
+        "B-25",
+        "B-26",
+        "B-27",
+        "B-28",
+        "B-29",
+        "B-30",
+
+        "C-1",
+        "C-2",
+        "C-3",
+        "C-4",
+        "C-5",
+        "C-6",
+        "C-7",
+        "C-8",
+        "C-9",
+        "C-10",
+        "C-11",
+        "C-12",
+        "C-13",
+        "C-14",
+        "C-15",
+        "C-16",
+        "C-17",
+        "C-18",
+        "C-19",
+        "C-20",
+        "C-21",
+        "C-22",
+        "C-23",
+        "C-24",
+        "C-25",
+        "C-26",
+        "C-27",
+        "C-28",
+        "C-29",
+        "C-30"
 
 
+    ];
+
+    let soldSeats = [];
+    soldSeat.forEach(seat => {
+        soldSeats.push(seat.seatId)
+    });
+
+    if (soldSeats.length > 0) {
+        soldSeats.forEach(soldseat => {
+            for (let i = 0; i < seats.length; i++) {
+                if (seats[i] === soldseat) {
+                    seats.splice(i, 1)
+                }
+            }
+        });
+    }
+
+    console.log(soldSeat);
+    //Helpers End
     return (
+
         <div>
             <div className='event-image'>
-                <img src={`data:image/jpeg;base64,${detailimagen}`} alt="" className='imag' />
+                <img src={`data:image/jpeg;base64,${data?.detailImage}`} alt="" className='imag' />
                 <div className='deat'>
-                    <span className='pricedet'>{eventprice} ₼-dan</span>
+                    <span className='pricedet'>{data?.price} ₼-dan</span>
                     <button className='buthearth'><i className="far fa-heart"></i></button>
                 </div>
-
             </div>
-
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-4 col-md-6 col-sm-12 mt-5'>
@@ -78,7 +215,7 @@ function Detail() {
                                     <b>Event Date</b>
                                 </div>
                                 <div className='text'>
-                                    <p>{moment(eventdate).format("DD/MM/YYYY")}</p>
+                                    <p>{moment(data?.date).format("DD/MM/YYYY")}</p>
                                 </div>
                             </div>
 
@@ -93,7 +230,7 @@ function Detail() {
                                     <b>Event Time</b>
                                 </div>
                                 <div className='text'>
-                                    <p>{moment(eventtime).format("HH:MM")}</p>
+                                    <p>{moment(data?.date).format("HH:MM")}</p>
                                 </div>
                             </div>
 
@@ -108,7 +245,7 @@ function Detail() {
                                     <b>Venue</b>
                                 </div>
                                 <div className='text'>
-                                    <p>{eventhall}</p>
+                                    <p>{data?.hall.name}</p>
                                 </div>
                             </div>
 
@@ -122,13 +259,22 @@ function Detail() {
                 <Form>
 
                     <SeatsioSeatingChart
+                        isObjectVisible={
+                            function (obj) {
+                                if (obj.category.label === 'Ground Floor') {
+                                    return true;
+                                }
+                                return false;
+                            }
+                        }
 
                         onObjectSelected={
                             function (obj) {
                                 // add the selected seat id to the array
                                 selectedSeats.push(obj);
+
                                 localStorage.setItem("seats", JSON.stringify(selectedSeats));
-                                console.log(selectedSeats);
+
                             }
                         }
 
@@ -146,45 +292,66 @@ function Detail() {
                                 console.log(selectedSeats);
                             }
                         }
-
-                        workspaceKey="publicDemoKey"
-                        pricing={[
-                            {
-                                category: 1,
-                                ticketTypes: [
-                                    {
-                                        ticketType: "event",
-                                        price: 30,
-                                        label: "For event",
-                                        description: "Salam meleyki"
-                                    }
-                                ]
-                            },
-                            {
-                                category: 2,
-                                ticketTypes: [
-                                    {
-                                        ticketType: "event",
-                                        price: 40,
-                                        label: "For event",
-                                        description: "Salam meleyki"
-                                    }
-                                ]
-                            }
-
+                        // unavailableCategories= {[2]}
+                        selectionValidators={[
+                            { type: 'noOrphanSeats', highlight: false }
                         ]}
+                        selectableObjects={seats}
+                        workspaceKey="publicDemoKey"
                         id={`seathall`}
+
                         selectedObjectsInputName={'selectedSeatsField'}
                         priceFormatter={(price) => formatPrice(price)}
                         openDraftDrawing={false}
-                        event="smallTheatreEvent"
+                        event="smallTheatreEvent3"
                         region="eu"
                         language="en"
-
                     />
                 </Form>
 
 
+            </div>
+            <div className="container">
+                <div className="row infa mt-5">
+                    <div className='col-lg-6 col-md-9 col-sm-12 loca'>
+                        <h4 className='hallside'>Məkan</h4>
+                        <h6 className='hallo'>{data?.hall.name}</h6>
+                    </div>
+                    <div className='col-lg-3 col-md-3 col-sm-12 loca'>
+                        <h4 className='hallside'>Tarix</h4>
+                        <h6 className='hallo'>{moment(data?.date).format("DD/MM/YYYY")}</h6>
+                    </div>
+                    <div className='col-lg-3 col-md-3 col-sm-12 loca'>
+                        <h4 className='hallside'>Qiymət</h4>
+                        <h6 className='hallo'>{data?.price} ₼</h6>
+                    </div>
+
+                </div>
+                <div className="row imha">
+                    <div className='col-lg-12 col-md-12 col-sm-12 poca'>
+                        <div className='roca'>
+                            <Form>
+                                <div className="hoca">
+                                    <div className='halna' >
+                                        <h4 className='halla'>{data?.name}</h4>
+                                    </div>
+                                    <div className='prico mt-2'>
+                                        <h6> Qiymət:</h6>
+                                        <h6>{data?.price} ₼</h6>
+                                    </div>
+                                    <div className='plusminus mt-2'>
+                                        <button className='minus'>-</button>
+                                        <Form.Control className='inpo' type="number" defaultValue={1} min={1} max={10} />
+                                        <button className='plus'>+</button>
+                                    </div>
+                                    <button className='subo mt-2' type='submit'>Əlavə Edin</button>
+                                </div>
+                            </Form>
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
         </div >
 

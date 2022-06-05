@@ -44,8 +44,8 @@
       font-size: 1.25rem;
       line-height: 1.75rem;
       border-radius: 9999px;
-    --tw-bg-opacity: 1;
-    background-color: rgba(255,221,0,var(--tw-bg-opacity));
+      --tw-bg-opacity: 1;
+      background-color: rgba(255, 221, 0, var(--tw-bg-opacity));
     }
     .buthearth {
       position: absolute;
@@ -112,4 +112,97 @@
 .seathall {
   width: 100vw;
   background-color: #242333;
+}
+.infa {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+  border: 1px solid #e5e7eb;
+  .loca {
+    padding: 40px;
+
+    .hallo {
+      font-size: 24px;
+      line-height: 23px;
+      color: #000000;
+      mix-blend-mode: normal;
+      opacity: 0.5;
+      margin-bottom: 4px;
+    }
+  }
+}
+.imha {
+  background-color: rgb(145, 145, 145);
+  border-bottom-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  height: 400px;
+  align-items: center;
+  text-align: center;
+  .roca {
+    display: flex;
+    justify-content: center;
+    .hoca {
+      background-color: white;
+
+      border-radius: 1.25rem;
+      width: 300px;
+      height: 232px;
+      .halna{
+        display: flex;
+        justify-content: space-between;
+        width: 270px;
+        margin: 13px;
+        .halla{
+          margin-top: 20px;
+        }
+      }
+ 
+      .prico{
+        display: flex;
+        justify-content: space-between;
+        width: 270px;
+        margin: 13px;
+      }
+      .plusminus {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 13px;
+        width: 270px;
+        .inpo{
+          text-align: center;
+        }
+        .minus {
+          background-color: #ffdd00;
+          border-radius: none !important;
+          border-top-left-radius: 1.25rem;
+          border-bottom-left-radius: 1.25rem;
+          width: 40px;
+          height: 40px;
+        }
+        .plus {
+          background-color: #ffdd00;
+          border-radius: none !important;
+          border-top-right-radius: 1.25rem;
+          border-bottom-right-radius: 1.25rem;
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      .subo {
+        background-color: #ffdd00;
+        width: 270px;
+        height: 41px;
+        border-radius: 1.25rem;
+      }
+    }
+  }
 }
