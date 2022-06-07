@@ -55,7 +55,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "300px",
+    width: "350px",
     height: "560px",
     bgcolor: 'background.paper',
     border: 'px solid #000',
@@ -252,6 +252,7 @@ debugger
                   </Form>
                   <p className='mt-5'>İTicket'də yenisiz?</p>
                   <Button className='regist' onClick={handleRegisterOpen}>Qeydiyyatdan Keçin</Button>
+                  
                 </Typography>
               </div>
 
@@ -329,7 +330,8 @@ debugger
                       <Form.Control outline="yellow" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     </Form.Group>
 
-                    <Button className="warning regist mt-4" size="sm" type="submit"> Qeydiyyat</Button>{' '}
+                    <Button className="warning regist mt-4" size="sm" type="submit"> Qeydiyyat</Button>
+                    <Button className='regist' onClick={handleLoginOpen}>Geriyə</Button>
 
                   </Form>
 
