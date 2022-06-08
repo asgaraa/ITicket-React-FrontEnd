@@ -13,6 +13,7 @@ function KidsSlider() {
     }, []);
 
     const loadEvents = async () => {
+        
         const result = await axios.get("https://localhost:44351/api/event/GetByCateId/7");
         setEvent(result.data);
     }
