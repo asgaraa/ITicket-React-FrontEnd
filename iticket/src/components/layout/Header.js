@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
@@ -69,12 +69,12 @@ const style = {
 
 function Header() {
 
-  const options = [
-    { title: "One Flew Over the Cuckoo's Nest", year: 1975 },
-    { title: 'Goodfellas', year: 1990 },
-    { title: 'The Matrix', year: 1999 },
-    { title: 'Seven Samurai', year: 1954 },
-  ]
+  // const options = [
+  //   { title: "One Flew Over the Cuckoo's Nest", year: 1975 },
+  //   { title: 'Goodfellas', year: 1990 },
+  //   { title: 'The Matrix', year: 1999 },
+  //   { title: 'Seven Samurai', year: 1954 },
+  // ]
 
   //Prop for api start
   const [fullname, setFullname] = useState();
@@ -85,7 +85,17 @@ function Header() {
   //Prop for Api End
   const [email, setEmail] = useState();
   const [logpassword, setLogpassword] = useState();
+  const [searchdata, setSearchdata] = useState([]);
 
+  useEffect(() => {
+    loadDatas();
+  },);
+
+  const loadDatas = async () => {
+    const result = await axios.get(`/api/Event/GetAllEvents`)
+    setSearchdata.push(result.data)
+    console.log(result.data);
+  }
 
   async function register(e) {
     debugger
@@ -114,13 +124,26 @@ function Header() {
   }
 
   async function login(e) {
-debugger
+    debugger
     await axios.post(`/api/Account/Login`, {
       Email: email,
       Password: logpassword
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
 
+      })
+      .catch(function (error) {
+
+
+      })
+  }
+  async function search(e) {
+    console.log(e);
+    await axios.post(`/api/Event/GetAllByName`, {
+      search: e
+    }, { 'Content-Type': 'multipart/form-data' })
+      .then(function (response) {
+        setSearchdata(response)
       })
       .catch(function (error) {
 
@@ -197,9 +220,10 @@ debugger
                 <Autocomplete
                   style={{ backgroundColor: 'white' }}
                   id="grouped-demo"
-                  options={options}
+                  options={searchdata}
                   groupBy={(option) => option.firstLetter}
                   getOptionLabel={(option) => option.title}
+                  onChange={(e) => search(e.target.value)}
                   sx={{
                     width: 1300, ".MuiOutlinedInput-root": {
                       "&:focus": {
@@ -252,7 +276,7 @@ debugger
                   </Form>
                   <p className='mt-5'>İTicket'də yenisiz?</p>
                   <Button className='regist' onClick={handleRegisterOpen}>Qeydiyyatdan Keçin</Button>
-                  
+
                 </Typography>
               </div>
 
