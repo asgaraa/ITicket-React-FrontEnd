@@ -89,10 +89,10 @@ function KidsSlider() {
                                                     {card.date.substring(0, 10)}
                                                 </div>
                                                 <span className="separator">
-                                                    •
+                                                    
                                                 </span>
                                                 <div className="venue-name">
-                                                    {card.hall}
+                                                  
                                                 </div>
                                             </div>
                                         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
@@ -85,17 +85,21 @@ function Header() {
   //Prop for Api End
   const [email, setEmail] = useState();
   const [logpassword, setLogpassword] = useState();
-  const [searchdata, setSearchdata] = useState([]);
+  // const [searchdata, setSearchdata] = useState([]);
 
-  useEffect(() => {
-    loadDatas();
-  },);
+  // useEffect(() => {
+  //   loadDatas();
+  // }, []);
 
-  const loadDatas = async () => {
-    const result = await axios.get(`/api/Event/GetAllEvents`)
-    setSearchdata.push(result.data)
-    console.log(result.data);
-  }
+  // const loadDatas = async () => {
+  //   await axios.get(`https://localhost:44351/api/Event/GetAllEvents`)
+  //     .then((res) => {
+  //       const result = res.data;
+  //       setSearchdata(result)
+      
+  //     })
+   
+  // }
 
   async function register(e) {
     debugger
@@ -137,19 +141,20 @@ function Header() {
 
       })
   }
-  async function search(e) {
-    console.log(e);
-    await axios.post(`/api/Event/GetAllByName`, {
-      search: e
-    }, { 'Content-Type': 'multipart/form-data' })
-      .then(function (response) {
-        setSearchdata(response)
-      })
-      .catch(function (error) {
+  // async function search(e) {
+  //   console.log(e);
+  //   await axios.post(`/api/Event/GetAllByName`, {
+  //     search: e
+  //   }, { 'Content-Type': 'multipart/form-data' })
+  //     .then(function (response) {
+  //       console.log(response);
+  //       // setSearchdata(response)
+  //     })
+  //     .catch(function (error) {
 
 
-      })
-  }
+  //     })
+  // }
 
 
   const [searchOpen, setSearchOpen] = React.useState(false);
@@ -220,10 +225,10 @@ function Header() {
                 <Autocomplete
                   style={{ backgroundColor: 'white' }}
                   id="grouped-demo"
-                  options={searchdata}
+                  
                   groupBy={(option) => option.firstLetter}
                   getOptionLabel={(option) => option.title}
-                  onChange={(e) => search(e.target.value)}
+                  // onChange={(e) => search(e.target.value)}
                   sx={{
                     width: 1300, ".MuiOutlinedInput-root": {
                       "&:focus": {
