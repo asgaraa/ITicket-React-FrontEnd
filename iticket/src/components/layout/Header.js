@@ -128,17 +128,15 @@ function Header() {
   }
 
   async function login(e) {
-    debugger
+    e.preventDefault();
     await axios.post(`/api/Account/Login`, {
       Email: email,
       Password: logpassword
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
-
+        localStorage.setItem("token", response.data);
       })
       .catch(function (error) {
-
-
       })
   }
   // async function search(e) {
@@ -267,17 +265,13 @@ function Header() {
                 <Typography component='span' id="modal-modal-body" sx={{ mt: 2 }}>
                   <Form onSubmit={(e) => login(e)}>
                     <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
-
                       <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" />
-
                     </Form.Group>
                     <Form.Group className="mb-3 mt-3" controlId="formBasicPassword">
-
                       <Form.Control outline="yellow" type="password" onChange={(e) => setLogpassword(e.target.value)} placeholder="Password" />
                     </Form.Group>
                     <Button className='login' onClick={handleForgotOpen}>Unutmusunuz?</Button>
                     <Button className="warning login mt-3" size="sm" type="submit"> Daxil Ol</Button>{' '}
-
                   </Form>
                   <p className='mt-5'>İTicket'də yenisiz?</p>
                   <Button className='regist' onClick={handleRegisterOpen}>Qeydiyyatdan Keçin</Button>
