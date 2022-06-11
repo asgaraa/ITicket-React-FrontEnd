@@ -5,8 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 // import Favorites from "../pages/Favorites.js"
 import moment from 'moment';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
-
-
 import '../../assets/sass/details/detail.scss'
 import { Form } from 'react-bootstrap';
 
