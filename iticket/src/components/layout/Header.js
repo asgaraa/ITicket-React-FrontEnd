@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { Autocomplete, TextField } from '@mui/material';
-import '../../assets/sass/layout/header.scss'
+import Swal from 'sweetalert2';
+import '../../assets/sass/layout/header.scss';
 
 
 
@@ -68,14 +68,6 @@ const style = {
 
 
 function Header() {
-
-  // const options = [
-  //   { title: "One Flew Over the Cuckoo's Nest", year: 1975 },
-  //   { title: 'Goodfellas', year: 1990 },
-  //   { title: 'The Matrix', year: 1999 },
-  //   { title: 'Seven Samurai', year: 1954 },
-  // ]
-
   //Prop for api start
   const [fullname, setFullname] = useState();
   const [username, setUsername] = useState();
@@ -85,35 +77,16 @@ function Header() {
   //Prop for Api End
   const [email, setEmail] = useState();
   const [logpassword, setLogpassword] = useState();
-  // const [searchdata, setSearchdata] = useState([]);
-
-  // useEffect(() => {
-  //   loadDatas();
-  // }, []);
-
-  // const loadDatas = async () => {
-  //   await axios.get(`https://localhost:44351/api/Event/GetAllEvents`)
-  //     .then((res) => {
-  //       const result = res.data;
-  //       setSearchdata(result)
-      
-  //     })
-   
-  // }
+  const [searchdata, setSearchdata] = useState([]);
 
   async function register(e) {
-    debugger
     e.preventDefault();
     await axios.post('/api/account/register', {
-
-
       Email: mail,
       Password: password,
       FullName: fullname,
       UserName: username,
       PhoneNumber: number,
-
-
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
 
@@ -122,9 +95,6 @@ function Header() {
 
 
       });
-
-
-
   }
 
   async function login(e) {
@@ -135,28 +105,40 @@ function Header() {
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
         localStorage.setItem("token", response.data);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Ugurla giris etdiz',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setLoginOpen(false)
       })
       .catch(function (error) {
       })
   }
-  // async function search(e) {
-  //   console.log(e);
-  //   await axios.post(`/api/Event/GetAllByName`, {
-  //     search: e
-  //   }, { 'Content-Type': 'multipart/form-data' })
-  //     .then(function (response) {
-  //       console.log(response);
-  //       // setSearchdata(response)
-  //     })
-  //     .catch(function (error) {
 
+  async function search(e) {
+    if (e.target.value == null) {
+      e.target.value = ""
+    }
+    await axios.get(`/api/Event/GetAllByName/${e.target.value}`, {
 
-  //     })
-  // }
+    }, { 'Content-Type': 'multipart/form-data' })
+      .then(function (response) {
+        setSearchdata(response.data)
+        console.log(searchdata);
+      })
+      .catch(function (error) {
+      })
+  }
 
 
   const [searchOpen, setSearchOpen] = React.useState(false);
-  const handleSearchOpen = () => setSearchOpen(true);
+  const handleSearchOpen = () => {
+    setSearchdata([])
+    setSearchOpen(true);
+  };
   const handleSearchClose = () => setSearchOpen(false);
 
   const [forgotOpen, setForgotOpen] = React.useState(false);
@@ -164,8 +146,8 @@ function Header() {
     setForgotOpen(true)
     setLoginOpen(false)
   }
-  const handleForgotClose = () => setForgotOpen(false);
 
+  const handleForgotClose = () => setForgotOpen(false);
   const [loginOpen, setLoginOpen] = React.useState(false);
   const handleLoginOpen = () => setLoginOpen(true);
   const [registerOpen, setRegisterOpen] = React.useState(false);
@@ -175,16 +157,17 @@ function Header() {
   }
   const handleLoginClose = () => setLoginOpen(false);
   const handleRegisterClose = () => setRegisterOpen(false);
-
+  function closeSearch() {
+    setSearchOpen(false)
+    setSearchdata([])
+  }
 
   return (
     <div >
       <div className='' >
-
         <Navbar expand="lg">
           <Container fluid>
             <NavLink className="nav-link navba" to="/"><img className='logo' src={require('../../assets/img/logoiticket.png')} alt="logo" /></NavLink>
-
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
@@ -216,39 +199,30 @@ function Header() {
             onClose={handleSearchClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
-
           >
             <Box sx={style.search} style={{ backgroundColor: 'white' }}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                <Autocomplete
-                  style={{ backgroundColor: 'white' }}
-                  id="grouped-demo"
-                  
-                  groupBy={(option) => option.firstLetter}
-                  getOptionLabel={(option) => option.title}
-                  // onChange={(e) => search(e.target.value)}
-                  sx={{
-                    width: 1300, ".MuiOutlinedInput-root": {
-                      "&:focus": {
-                        borderRadius: 50,
-                        borderColor: "red",
-                        borderWidth: 10,
-                        bgcolor: "white"
-                      }
-                    }
-                  }}
-                  renderInput={(params) => <TextField {...params} />}
-                />
+                <input type="text" style={{ width: '100%' }} onChange={(e) => search(e)} />
+                {searchdata.map(search => (
+                  <tr>
+                    <Link to={`/detail/${search.id}`} style={{textDecoration:'none'}} onClick={() => closeSearch()}>
+                      <td style={{ backgroundColor: 'white', width: '100vw' }} >
+                        {search.name}
+                      </td>
+                    </Link>
+                  </tr>
+                )
+
+
+
+                )}
               </Typography>
-
-
             </Box>
 
           </Modal>
         </div>
 
         <Container>
-
           {/* Login Modal */}
           <Modal
             open={loginOpen}
@@ -275,16 +249,10 @@ function Header() {
                   </Form>
                   <p className='mt-5'>İTicket'də yenisiz?</p>
                   <Button className='regist' onClick={handleRegisterOpen}>Qeydiyyatdan Keçin</Button>
-
                 </Typography>
               </div>
-
-
             </Box>
-
           </Modal>
-
-
           {/* Forgot Pass Modal */}
           <Modal
             open={forgotOpen}
@@ -316,7 +284,6 @@ function Header() {
 
             </Box>
           </Modal>
-
           {/* Register Modal */}
           <Modal
             open={registerOpen}
