@@ -89,7 +89,14 @@ function Header() {
       PhoneNumber: number,
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
-
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Mailinizi yoxlayin',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setRegisterOpen(false)
       })
       .catch(function (error) {
 
