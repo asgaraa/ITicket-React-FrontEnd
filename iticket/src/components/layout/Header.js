@@ -202,19 +202,19 @@ function Header() {
           >
             <Box sx={style.search} style={{ backgroundColor: 'white' }}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                <input type="text" style={{ width: '100%' }} onChange={(e) => search(e)} />
+                <input type="text" className='searchbar' onChange={(e) => search(e)} />
                 {searchdata.map(search => (
-                  <tr>
-                    <Link to={`/detail/${search.id}`} style={{textDecoration:'none'}} onClick={() => closeSearch()}>
-                      <td style={{ backgroundColor: 'white', width: '100vw' }} >
-                        {search.name}
-                      </td>
-                    </Link>
-                  </tr>
+                  <table className='tabe'>
+                    <tr className='tre'>
+                      <Link to={`/detail/${search.id}`} className='linko'  onClick={() => closeSearch()}>
+                        <td className='tabde' >
+                          {search.name}
+                        </td>
+                      </Link>
+                    </tr>
+                  </table>
+
                 )
-
-
-
                 )}
               </Typography>
             </Box>
