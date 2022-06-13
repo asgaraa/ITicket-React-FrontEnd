@@ -78,6 +78,7 @@ function Header() {
   const [email, setEmail] = useState();
   const [logpassword, setLogpassword] = useState();
   const [searchdata, setSearchdata] = useState([]);
+  const [forgotmail, setForgotmail]= useState();
 
   async function register(e) {
     e.preventDefault();
@@ -89,14 +90,14 @@ function Header() {
       PhoneNumber: number,
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
+        setRegisterOpen(false)
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'Mailinizi yoxlayin',
+          title: 'Zəhmət olmasa emailinizi yoxlayın',
           showConfirmButton: false,
           timer: 1500
         })
-        setRegisterOpen(false)
       })
       .catch(function (error) {
 
@@ -138,6 +139,28 @@ function Header() {
       })
       .catch(function (error) {
       })
+  }
+
+  async function resetpassword(e) {
+    e.preventDefault();
+    await axios.post('/api/Account/ForgotPassword', {
+      Email: forgotmail,
+     
+    }, { 'Content-Type': 'multipart/form-data' })
+      .then(function (response) {
+        setRegisterOpen(false)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Zəhmət olmasa emailinizi yoxlayın',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      })
+      .catch(function (error) {
+
+
+      });
   }
 
 
@@ -208,19 +231,18 @@ function Header() {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style.search} style={{ backgroundColor: 'white' }}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
+              <Typography id="modal-modal-title" variant="h6" >
                 <input type="text" className='searchbar' onChange={(e) => search(e)} />
                 {searchdata.map(search => (
                   <table className='tabe'>
                     <tr className='tre'>
-                      <Link to={`/detail/${search.id}`} className='linko'  onClick={() => closeSearch()}>
+                      <Link to={`/detail/${search.id}`} className='linko' onClick={() => closeSearch()}>
                         <td className='tabde' >
                           {search.name}
                         </td>
                       </Link>
                     </tr>
                   </table>
-
                 )
                 )}
               </Typography>
@@ -228,7 +250,6 @@ function Header() {
 
           </Modal>
         </div>
-
         <Container>
           {/* Login Modal */}
           <Modal
@@ -276,10 +297,10 @@ function Header() {
                   Şifrəni Sıfırla
                 </Typography>
                 <Typography component='span' id="modal-modal-description" sx={{ mt: 2 }}>
-                  <Form>
+                  <Form onSubmit={(e) => resetpassword(e)}>
                     <Form.Group className="mb-3 mt-5" controlId="formBasicForgotEmail">
 
-                      <Form.Control type="email" placeholder="Enter email" />
+                      <Form.Control type="email" onChange={(e)=> setForgotmail(e.target.value)} placeholder="Enter email" />
 
                     </Form.Group>
 
@@ -326,22 +347,14 @@ function Header() {
                     <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
                       <Form.Control outline="yellow" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     </Form.Group>
-
                     <Button className="warning regist mt-4" size="sm" type="submit"> Qeydiyyat</Button>
                     <Button className='regist' onClick={handleLoginOpen}>Geriyə</Button>
-
                   </Form>
-
-
                 </Typography>
               </div>
-
             </Box>
           </Modal>
         </Container>
-
-
-
       </div>
     </div>
 

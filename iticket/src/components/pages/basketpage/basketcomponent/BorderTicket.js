@@ -1,7 +1,7 @@
-import React,{useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import '../../../../assets/sass/basket/borderticket.scss';
 import Swal from 'sweetalert2';
 import moment from 'moment';
@@ -9,13 +9,16 @@ import moment from 'moment';
 function BorderTicket() {
 
     const [event, setEvent] = useState();
+    // const [fullname, setFullname] = useState();
+    // const [phone, setPhone] = useState();
+    const [email, setEmail] = useState();
     let tickets = JSON.parse(localStorage.getItem('seats'));
+
+
     let seats = tickets.seats
-    
-    if (seats == null) {
-        seats = []
-    }
-    
+
+
+
     function orders(e) {
         e.preventDefault();
         seats.forEach(ticket => {
@@ -23,7 +26,8 @@ function BorderTicket() {
             async function createOrder() {
                 await axios.post('/api/Order/CreateOrder', {
                     seatId: ticket,
-                    eventId: tickets.id
+                    eventId: tickets.id,
+                    Email:email
                 }, { 'Content-Type': 'multipart/form-data' })
                     .then(function (response) {
                         Swal.fire(
@@ -43,7 +47,7 @@ function BorderTicket() {
                     });
             }
         });
-        
+
     }
 
     useEffect(() => {
@@ -78,10 +82,13 @@ function BorderTicket() {
 
         fetchResult()
 
-        
-        
+
+
     }, [tickets.id]);
-    
+
+    if (seats == null) {
+        seats = []
+    }
     return (
         <div className='container'>
             <div className="row mt-5 ticketsonline">
@@ -96,10 +103,10 @@ function BorderTicket() {
                                     <div className='ticket d-flex mt-5 '>
                                         <div className='tickdeta'>
                                             <div className='imagetick'>
-                                                <img style={{height:'100%',minHeight:'-webkit-fill-available'}} className='tickimage imag' src={`data:image/jpeg;base64,${event?.detailImage}`} alt=""  />
+                                                <img style={{ height: '100%', minHeight: '-webkit-fill-available' }} className='tickimage imag' src={`data:image/jpeg;base64,${event?.detailImage}`} alt="" />
                                             </div>
                                             <div>
-                                                <div><span className='spans'>{event?.hall.name}</span><span className='spans'>{moment(event?.date).subtract(10, 'days').calendar()}</span><span className='spans'>{event?.date.substring(11,16)}</span></div>
+                                                <div><span className='spans'>{event?.hall.name}</span><span className='spans'>{moment(event?.date).subtract(10, 'days').calendar()}</span><span className='spans'>-19:30</span></div>
                                                 <div><b className='tickname'>{event?.name}</b></div>
                                                 <div className='seattick'><p>Sira:{seat.substring(0, 1)}</p><p>Yer: {seat.substring(2)}</p></div>
                                             </div>
@@ -120,18 +127,18 @@ function BorderTicket() {
                     <div className='col-lg-3 col-md-3 col-sm-12 '>
                         <div className='waro mt-5'>
                             <div className='container'>
-                                <Form className='mt-5'>
+                                <Form onSubmit={(e) => orders(e)} className='mt-5'>
 
                                     <Form.Group className="mb-4" controlId="formBasicText">
 
-                                        <Form.Control type="text" placeholder="Ad" />
+                                        <Form.Control type="text"  placeholder="Ad və Soy Ad" />
 
                                     </Form.Group>
-                                    <Form.Group className="mb-4" controlId="formBasicText">
+                                    {/* <Form.Group className="mb-4" controlId="formBasicText">
 
                                         <Form.Control type="text" placeholder="Soy Ad" />
 
-                                    </Form.Group>
+                                    </Form.Group> */}
 
                                     <Form.Group className="mb-4" controlId="formBasicNumber">
 
@@ -139,18 +146,18 @@ function BorderTicket() {
                                     </Form.Group>
                                     <Form.Group className="mb-4" controlId="formBasicEmail">
 
-                                        <Form.Control type="email" placeholder="Email" />
+                                        <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
                                     </Form.Group>
                                     <Form.Group className="mb-4" controlId="formBasicCheckbox">
 
                                         <Form.Check type="checkbox" label=" Şərtləri və qaydaları qəbul edirəm." />
                                     </Form.Group>
-
-                                    <Link to='' onClick={(e) => orders(e)}>
-                                        <Button className='tickord' type="submit" >
-                                            Sifariş Yarat
-                                        </Button>
-                                    </Link>
+                                    {/* 
+                                    <Link to='' onClick={(e) => orders(e)}> */}
+                                    <Button className='tickord' type="submit" >
+                                        Sifariş Yarat
+                                    </Button>
+                                    {/* </Link> */}
 
                                 </Form>
                             </div>
