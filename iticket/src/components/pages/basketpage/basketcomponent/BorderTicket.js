@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React,{useEffect, useState} from 'react';
 import axios from 'axios';
 import { Button, Form } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../../../assets/sass/basket/borderticket.scss';
 import Swal from 'sweetalert2';
 import moment from 'moment';
@@ -9,16 +9,31 @@ import moment from 'moment';
 function BorderTicket() {
 
     const [event, setEvent] = useState();
-    // const [fullname, setFullname] = useState();
-    // const [phone, setPhone] = useState();
-    const [email, setEmail] = useState();
     let tickets = JSON.parse(localStorage.getItem('seats'));
+    let token = localStorage.getItem('token');
+
+    function parseJwt (token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+    
+        return JSON.parse(jsonPayload);
+    };
+    let user;
+    if(token != null){
+        let usermail = parseJwt(token).sub[1];
+        axios.get(`api/Account/GetUserByEmail/${usermail}`)
+        .then((res) =>
+        {
+            user=res
+            
+        })
+    }
 
 
     let seats = tickets.seats
-
-
-
     function orders(e) {
         e.preventDefault();
         seats.forEach(ticket => {
@@ -26,8 +41,7 @@ function BorderTicket() {
             async function createOrder() {
                 await axios.post('/api/Order/CreateOrder', {
                     seatId: ticket,
-                    eventId: tickets.id,
-                    Email:email
+                    eventId: tickets.id
                 }, { 'Content-Type': 'multipart/form-data' })
                     .then(function (response) {
                         Swal.fire(
@@ -47,7 +61,7 @@ function BorderTicket() {
                     });
             }
         });
-
+        
     }
 
     useEffect(() => {
@@ -82,13 +96,14 @@ function BorderTicket() {
 
         fetchResult()
 
-
-
+        
+        
     }, [tickets.id]);
 
     if (seats == null) {
         seats = []
     }
+    console.log(user);
     return (
         <div className='container'>
             <div className="row mt-5 ticketsonline">
@@ -127,11 +142,11 @@ function BorderTicket() {
                     <div className='col-lg-3 col-md-3 col-sm-12 '>
                         <div className='waro mt-5'>
                             <div className='container'>
-                                <Form onSubmit={(e) => orders(e)} className='mt-5'>
+                                <Form className='mt-5'>
 
                                     <Form.Group className="mb-4" controlId="formBasicText">
-
-                                        <Form.Control type="text"  placeholder="Ad və Soy Ad" />
+                                    <Form.Label> Ad və Soy Ad</Form.Label>
+                                        <Form.Control type="text" defaultValue={user?.fullName}  />
 
                                     </Form.Group>
                                     {/* <Form.Group className="mb-4" controlId="formBasicText">
@@ -141,23 +156,23 @@ function BorderTicket() {
                                     </Form.Group> */}
 
                                     <Form.Group className="mb-4" controlId="formBasicNumber">
-
-                                        <Form.Control type="number" placeholder="Telefon Nömrəsi" />
+                                    <Form.Label> Telefon Nömrəsi</Form.Label>
+                                        <Form.Control type="number"  />
                                     </Form.Group>
                                     <Form.Group className="mb-4" controlId="formBasicEmail">
-
-                                        <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                                    <Form.Label> Email</Form.Label>
+                                        <Form.Control type="email" defaultValue={user?.email}   />
                                     </Form.Group>
                                     <Form.Group className="mb-4" controlId="formBasicCheckbox">
 
                                         <Form.Check type="checkbox" label=" Şərtləri və qaydaları qəbul edirəm." />
                                     </Form.Group>
-                                    {/* 
-                                    <Link to='' onClick={(e) => orders(e)}> */}
+                                    
+                                    <Link to='' onClick={(e) => orders(e)}> 
                                     <Button className='tickord' type="submit" >
                                         Sifariş Yarat
                                     </Button>
-                                    {/* </Link> */}
+                                     </Link> 
 
                                 </Form>
                             </div>

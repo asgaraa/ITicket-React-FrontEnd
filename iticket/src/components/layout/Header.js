@@ -192,6 +192,9 @@ function Header() {
     setSearchdata([])
   }
 
+ 
+
+
   return (
     <div >
       <div className='' >
