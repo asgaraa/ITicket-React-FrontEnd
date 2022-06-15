@@ -34,13 +34,16 @@ import ForgotPassword from './components/pages/profile/ForgotPassword';
 
 
 function App() {
+  if(localStorage.getItem('basket') == null){
+    localStorage.setItem('basket',JSON.stringify([]))
+  }
   return (
-
+    
     <Router>
       <div>
         <Header />
 
-
+    
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/allevents" element={<AllEvents />} />

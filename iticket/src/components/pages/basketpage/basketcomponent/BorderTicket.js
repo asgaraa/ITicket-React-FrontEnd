@@ -150,9 +150,7 @@ function BorderTicket() {
 
                                     </Form.Group>
                                     {/* <Form.Group className="mb-4" controlId="formBasicText">
-
                                         <Form.Control type="text" placeholder="Soy Ad" />
-
                                     </Form.Group> */}
 
                                     <Form.Group className="mb-4" controlId="formBasicNumber">
