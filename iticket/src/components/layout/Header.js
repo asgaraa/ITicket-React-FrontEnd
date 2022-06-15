@@ -12,6 +12,8 @@ import '../../assets/sass/layout/header.scss';
 
 
 
+
+
 const style = {
   search: {
     position: 'absolute',
@@ -78,7 +80,7 @@ function Header() {
   const [email, setEmail] = useState();
   const [logpassword, setLogpassword] = useState();
   const [searchdata, setSearchdata] = useState([]);
-  const [forgotmail, setForgotmail]= useState();
+  const [forgotmail, setForgotmail] = useState();
 
   async function register(e) {
     e.preventDefault();
@@ -145,7 +147,7 @@ function Header() {
     e.preventDefault();
     await axios.post('/api/Account/ForgotPassword', {
       Email: forgotmail,
-     
+
     }, { 'Content-Type': 'multipart/form-data' })
       .then(function (response) {
         setRegisterOpen(false)
@@ -192,7 +194,27 @@ function Header() {
     setSearchdata([])
   }
 
- 
+
+  let count=0;
+  let sead = JSON.parse(localStorage.getItem('seats'))
+
+
+  if (sead != null) {
+
+
+    for (let i = 0; i <= sead.seats.length; i++) {
+
+      count++
+
+    }
+
+
+
+  }
+  else {
+    count = 0;
+  }
+
 
 
   return (
@@ -219,7 +241,7 @@ function Header() {
               <div className="basket d-flex justify-content-end">
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/favorites"><i className="far fa-heart"></i></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleSearchOpen}><i className="fas fa-search"></i></NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/basket"><i className="fas fa-shopping-basket"></i> <span>0</span></NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/basket"><i className="fas fa-shopping-basket"></i> <span>{count}</span></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleLoginOpen}> <i className="far fa-user-circle"></i> </NavLink>
               </div>
             </Navbar.Collapse>
@@ -303,7 +325,7 @@ function Header() {
                   <Form onSubmit={(e) => resetpassword(e)}>
                     <Form.Group className="mb-3 mt-5" controlId="formBasicForgotEmail">
 
-                      <Form.Control type="email" onChange={(e)=> setForgotmail(e.target.value)} placeholder="Enter email" />
+                      <Form.Control type="email" onChange={(e) => setForgotmail(e.target.value)} placeholder="Enter email" />
 
                     </Form.Group>
 
