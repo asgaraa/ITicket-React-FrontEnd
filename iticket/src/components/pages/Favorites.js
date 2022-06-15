@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Filter from "../layout/Filter";
 import { Link } from 'react-router-dom';
+import "../../assets/sass/favorites.scss"
 import moment from 'moment';
 
 function Favorites() {
@@ -11,6 +12,7 @@ function Favorites() {
     const [hallid, setHallId] = useState();
     const [date, setDate] = useState('');
     const [price, setPrice] = useState([0, 100]);
+    const [forrender,setForrender] = useState();
 
     let startAndEnd = date.split('to');
 
@@ -20,7 +22,7 @@ function Favorites() {
     }
 
 
-    let favorites = JSON.parse(localStorage.getItem('basket'));
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
 
     // let result = items.filter(event => event.price >= price[0] && event.price <= price[1] && moment(startAndEnd[0]).format('YYYY/MM/DD') < moment(event.date).format('YYYY/MM/DD'));
     let result = favorites;
@@ -38,15 +40,20 @@ function Favorites() {
 
     function clearFavorites(e) {
         e.preventDefault()
-        localStorage.removeItem('basket')
-        
+        localStorage.removeItem('favorites')
+
+        localStorage.setItem('favorites',JSON.stringify([]))
+        result = JSON.parse(localStorage.getItem('favorites'));
+        setForrender('');
+        console.log(forrender);
     }
     return (
         <div className='container'>
-            <div>
+            <div className="d-flex justify-content-between">
                 <h3 className='mt-5'>Seçilmişlər</h3>
-                <button onClick={(e) => clearFavorites(e)}>Temizle</button>
+                <button className="btn btn-outline-success cleare" onClick={(e) => clearFavorites(e)}>Təmizlə</button>
             </div>
+            
             <div className='mt-5'>
                 <Filter hallId={setHallId} date={setDate} setPrice={setPrice} getPrice={price} />
             </div>

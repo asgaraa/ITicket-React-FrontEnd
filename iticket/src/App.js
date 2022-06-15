@@ -34,8 +34,8 @@ import ForgotPassword from './components/pages/profile/ForgotPassword';
 
 
 function App() {
-  if(localStorage.getItem('basket') == null){
-    localStorage.setItem('basket',JSON.stringify([]))
+  if(localStorage.getItem('favorites') == null){
+    localStorage.setItem('favorites',JSON.stringify([]))
   }
   return (
     

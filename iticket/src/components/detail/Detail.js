@@ -841,9 +841,9 @@ function Detail() {
         });
     }
 
-    function addBasket(data) {
+    function addFavorites(data) {
         let count = 0;
-        let basket = JSON.parse(localStorage.getItem('basket'))
+        let basket = JSON.parse(localStorage.getItem('favorites'))
         if (basket != null) {
             for (let i = 0; i < basket.length; i++) {
                 if (parseInt(basket[i].id) === parseInt(data.id)) {
@@ -859,7 +859,7 @@ function Detail() {
             let hearth = document.getElementById('hearth')
             hearth.style.color = 'yellow'
         }
-        localStorage.setItem('basket', JSON.stringify(basket))
+        localStorage.setItem('favorites', JSON.stringify(basket))
 
     }
 
@@ -876,7 +876,7 @@ function Detail() {
                 <img src={`data:image/jpeg;base64,${data?.detailImage}`} alt="" className='imag' />
                 <div className='deat'>
                     <span className='pricedet'>{data?.price} ₼-dan</span>
-                    <button className='buthearth' onClick={() => addBasket(data)} ><i style={{fontSize:'30px'}} id='hearth' className="far fa-heart"></i></button>
+                    <button className='buthearth' onClick={() => addFavorites(data)} ><i style={{fontSize:'30px'}} id='hearth' className="far fa-heart"></i></button>
                 </div>
             </div>
             <div className='container'>
