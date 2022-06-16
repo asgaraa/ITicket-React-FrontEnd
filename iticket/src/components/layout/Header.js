@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
@@ -46,7 +46,7 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: "350px",
-    height: "250px",
+    height: "270px",
     bgcolor: 'background.paper',
     border: 'px solid #000',
     boxShadow: 24,
@@ -181,7 +181,11 @@ function Header() {
 
   const handleForgotClose = () => setForgotOpen(false);
   const [loginOpen, setLoginOpen] = React.useState(false);
-  const handleLoginOpen = () => setLoginOpen(true);
+  const handleLoginOpen = () => {
+    setLoginOpen(true)
+  setRegisterOpen(false)
+  setForgotOpen(false)
+  };
   const [registerOpen, setRegisterOpen] = React.useState(false);
   const handleRegisterOpen = () => {
     setRegisterOpen(true)
@@ -193,27 +197,41 @@ function Header() {
     setSearchOpen(false)
     setSearchdata([])
   }
+  const [basketnum, setBasketnum] = useState(0);
+
+  useEffect(() => {
+    BasketResult();
+
+  })
 
 
-  let count=0;
-  let sead = JSON.parse(localStorage.getItem('seats'))
+  function BasketResult() {
+    let count = 0;
+
+    let sead = JSON.parse(localStorage.getItem('seats'))
 
 
-  if (sead != null) {
+    if (sead === null) {
 
 
-    for (let i = 0; i <= sead.seats.length; i++) {
+      setBasketnum(count)
 
-      count++
+    }
+    else {
+
+      for (let i = 0; i <= sead.seats.length; i++) {
+
+        count++
+
+      }
+      setBasketnum(count-1)
+      
 
     }
 
 
+  }
 
-  }
-  else {
-    count = 0;
-  }
 
 
 
@@ -241,7 +259,7 @@ function Header() {
               <div className="basket d-flex justify-content-end">
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/favorites"><i className="far fa-heart"></i></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleSearchOpen}><i className="fas fa-search"></i></NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/basket"><i className="fas fa-shopping-basket"></i> <span>{count}</span></NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/basket"><i className="fas fa-shopping-basket"></i> <span>{basketnum}</span></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleLoginOpen}> <i className="far fa-user-circle"></i> </NavLink>
               </div>
             </Navbar.Collapse>
@@ -330,6 +348,7 @@ function Header() {
                     </Form.Group>
 
                     <Button className="warning login" size="sm" type="submit"> Sıfırla</Button>{' '}
+                    <Button className='regist' onClick={handleLoginOpen}>Geriyə</Button>
 
                   </Form>
                 </Typography>
