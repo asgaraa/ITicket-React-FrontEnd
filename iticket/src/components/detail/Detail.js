@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import {useDispatch} from 'react-redux'
+import { decrease } from '../../redux/stateSlice';
 
 
 // import Favorites from "../pages/Favorites.js"
@@ -864,6 +866,9 @@ function Detail() {
 
     }
 
+    const dispatch = useDispatch();
+
+
     //Helpers End
 
 
@@ -935,6 +940,7 @@ function Detail() {
                     <SeatsioSeatingChart
                         onObjectSelected={
                             function (obj) {
+                                dispatch(decrease())
                                 // add the selected seat id to the array
                                 selectedSeats.push(obj.label);
                                 localStorage.setItem("seats", JSON.stringify(seatsobj));

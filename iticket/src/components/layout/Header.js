@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Swal from 'sweetalert2';
 import '../../assets/sass/layout/header.scss';
-
+import {useSelector} from 'react-redux'
 
 
 
@@ -200,40 +200,40 @@ function Header() {
   const [basketnum, setBasketnum] = useState(0);
 
   useEffect(() => {
-    BasketResult();
+    //BasketResult();
 
   })
 
 
-  function BasketResult() {
-    let count = 0;
+  // function BasketResult() {
+  //   let count = 0;
 
-    let sead = JSON.parse(localStorage.getItem('seats'))
-
-
-    if (sead === null) {
+  //   let sead = JSON.parse(localStorage.getItem('seats'))
 
 
-      setBasketnum(count)
+  //   if (sead === null) {
 
-    }
-    else {
 
-      for (let i = 0; i <= sead.seats.length; i++) {
+  //     setBasketnum(count)
 
-        count++
+  //   }
+  //   else {
 
-      }
-      setBasketnum(count-1)
+  //     for (let i = 0; i <= sead.seats.length; i++) {
+
+  //       count++
+
+  //     }
+  //     setBasketnum(count-1)
       
 
-    }
+  //   }
 
 
-  }
+  // }
 
-
-
+  const data = useSelector(state=> state.state.localCount);
+  console.log(data)
 
   return (
     <div >
@@ -259,7 +259,7 @@ function Header() {
               <div className="basket d-flex justify-content-end">
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/favorites"><i className="far fa-heart"></i></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleSearchOpen}><i className="fas fa-search"></i></NavLink>
-                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/basket"><i className="fas fa-shopping-basket"></i> <span>{basketnum}</span></NavLink>
+                <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/basket"><i className="fas fa-shopping-basket"></i> <span>{data}</span></NavLink>
                 <NavLink style={{ textDecoration: 'none', fontSize: '25px' }} className="nav-link navba" to="/" onClick={handleLoginOpen}> <i className="far fa-user-circle"></i> </NavLink>
               </div>
             </Navbar.Collapse>

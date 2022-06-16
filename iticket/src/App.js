@@ -1,4 +1,3 @@
-
 import '../src/App.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import Home from './components/pages/Home';
@@ -37,6 +36,8 @@ function App() {
   if(localStorage.getItem('favorites') == null){
     localStorage.setItem('favorites',JSON.stringify([]))
   }
+
+
   return (
     
     <Router>
