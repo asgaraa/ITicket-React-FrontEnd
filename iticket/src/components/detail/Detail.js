@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+
 // import Favorites from "../pages/Favorites.js"
 import moment from 'moment';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
