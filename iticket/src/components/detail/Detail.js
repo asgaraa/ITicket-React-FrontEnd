@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { decrease } from '../../redux/stateSlice';
 
 
@@ -882,7 +882,7 @@ function Detail() {
                 <img src={`data:image/jpeg;base64,${data?.detailImage}`} alt="" className='imag' />
                 <div className='deat'>
                     <span className='pricedet'>{data?.price} ₼-dan</span>
-                    <button className='buthearth' onClick={() => addFavorites(data)} ><i style={{fontSize:'30px'}} id='hearth' className="far fa-heart"></i></button>
+                    <button className='buthearth' onClick={() => addFavorites(data)} ><i style={{ fontSize: '30px' }} id='hearth' className="far fa-heart"></i></button>
                 </div>
             </div>
             <div className='container'>
@@ -935,6 +935,7 @@ function Detail() {
 
                 </div>
             </div>
+        
             <div className='mt-5 seathall' >
                 <Form>
                     <SeatsioSeatingChart
